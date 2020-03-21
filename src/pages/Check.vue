@@ -86,22 +86,3 @@ export default {
 
 }}
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-    div{
-        margin: 10px 0;
-    }
-    .scanner{
-        width: 300px;
-        max-width: 100%;
-        height: auto;
-        margin: 0 auto;
-    }
-    .verify-success{
-        color: green;
-    }
-    .verify-error{
-        color: red;
-    }
-</style>
