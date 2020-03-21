@@ -14,27 +14,32 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      navTitle: 'Home'
     },
     {
       path: '/login/',
       name: 'Login',
-      component: Login
+      component: Login,
+      navTitle: 'Login'
     },
     {
       path: '/register/',
       name: 'Register',
-      component: Register
+      component: Register,
+      navTitle: 'Register'
     },
     {
       path: '/check/',
       name: 'Check',
-      component: Check
+      component: Check,
+      navTitle: 'Ticket Validieren'
     },
     {
       path: '/config/',
       name: 'Config',
-      component: Config
+      component: Config,
+      navTitle: 'Config'
     }
   ]
 })
