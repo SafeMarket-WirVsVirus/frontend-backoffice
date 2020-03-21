@@ -28,10 +28,3 @@ new Vue({
 
 
 
-/* 
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-}) */
