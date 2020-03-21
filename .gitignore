@@ -1,1 +1,22 @@
-node_modules
+# system files
+*Thumbs.db
+*DS_Store
+
+# editor settings
+*.sublime-workspace
+.idea/*
+
+# node
+*node_modules
+
+# caching, mapping and temporary files
+*.cache
+*.map
+src/.temp
+
+# environment
+.env
+.env.*
+
+# Log files
+*.log
