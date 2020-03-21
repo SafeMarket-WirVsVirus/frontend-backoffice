@@ -22,7 +22,7 @@
 
 <script>
 import { QrcodeStream } from 'vue-qrcode-reader'
-
+import {HTTP} from '../http';
 
 export default {
     components: { QrcodeStream },
@@ -49,7 +49,15 @@ export default {
 
         verifyTicket ( code ) {
             this.isLoading = true;
-            // sleep(1);
+            
+            HTTP.post('/')
+            .then(response => {
+                this.posts = response.data
+            })
+            .catch(e => {
+                this.errors.push(e)
+            })
+
             this.isLoading = false;
 
             return {
