@@ -1,0 +1,15 @@
+{
+    "background_color": "purple",
+    "description": "NoQ Backoffice",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "src/assets/fox-icon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "name": "NoQ Backoffice",
+    "short_name": "NoQ",
+    "start_url": "index.html"
+  }
