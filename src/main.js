@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+//Bootstrap
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -13,3 +16,8 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+//BootstrapVue
+Vue.use(BootstrapVue)
+//BootstrapVue icon components plugin (optionally)
+Vue.use(IconsPlugin)
