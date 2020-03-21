@@ -10,12 +10,9 @@
 
 <script>
 import router from "../router"
-// import axios from "axios"
+import axios from "axios"
 
-let account = {
-  user: "test",
-  password: "123"
-}
+
 
 export default {
   name: 'Login',
@@ -30,12 +27,9 @@ export default {
   methods: {
     check_login() {
       if(this.input.user != "" && this.input.password != "") {
-        if(this.input.user == account.user && this.input.password == account.password) {
-          this.$emit("authentification", true);
+          // this.$emit("authentification", true);
           this.login();
-        } else {
-          console.log("Incorrect username and/or password!");
-        }
+         
       } else {
         console.log("Please enter a username and password!");
       }
@@ -46,21 +40,25 @@ export default {
       // let password = "[account.password]"
       
         
-        // axios.post("/api/login", data)
-        //   .then((response) => {
-            console.log("Blubber");
+        axios.post("https://wirvsvirusretail.azurewebsites.net/api/Authentication", '{Username:"Hans",Passwort:"Peter}',{headers: {
+        'Content-Type': 'application/json'
+    }})
+          .then((response) => {
+            console.log(response);
             this.$session.start()
             this.$session.set('token', 'TestToken')
             this.$session.set('userid', 'TestId')
             this.loginpath = "/logout";
             this.loginname = "Logout";
+            
             console.log(this.$session.getAll());
             console.log("Logged in")
             router.push("/")
-        // })
-        //   .catch((errors) => {
-        //     console.log("Login failed")
-        //   })
+        })
+          .catch((errors) => {
+            console.log(errors);
+            console.log("Login failed")
+          })
       
     },
     register() {
