@@ -11,10 +11,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "0.19.2",
     "vue": "^2.5.2",
+    "vue-qrcode-reader": "^2.1.1",
     "vue-router": "^3.0.1",
-    "vue-session": "1.0.0",
-    "axios": "0.19.2"
+    "vue-session": "1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

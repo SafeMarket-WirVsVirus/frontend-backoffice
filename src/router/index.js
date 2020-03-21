@@ -5,7 +5,6 @@ import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 import Check from '@/pages/Check'
 import Config from '@/pages/Config'
-import VueBarcodeScanner from 'vue-barcode-scanner'
 
 Vue.use(Router)
 
