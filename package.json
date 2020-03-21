@@ -11,11 +11,13 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1",
     "axios": "0.19.2",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.7.0",
+    "vue": "^2.5.2",
     "vue-barcode-scanner": "^0.6.0",
-    "vue-qrcode-reader": "^2.1.1"
+    "vue-qrcode-reader": "^2.1.1",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
