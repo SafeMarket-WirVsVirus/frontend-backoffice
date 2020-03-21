@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import {HTTP} from '../http';
+
 export default {
   name: 'Home',
   data () {
@@ -22,6 +24,15 @@ export default {
       this.$session.destroy()
       this.$router.push('/login')
     }
+  },
+  created() {
+    HTTP.get(`posts`)
+    .then(response => {
+      this.posts = response.data
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
   }
 }
 </script>
