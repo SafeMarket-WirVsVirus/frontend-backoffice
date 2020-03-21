@@ -4,7 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import VueSession from 'vue-session'
+
+
+
 Vue.config.productionTip = false
+
+
+
 
 /* eslint-disable no-new */
 new Vue({
@@ -13,3 +20,10 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+var options = {
+  persist: true
+}
+Vue.use(VueSession, options)
+
+
