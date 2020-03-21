@@ -17,7 +17,8 @@
     "vue-router": "^3.1.6",
     "axios": "0.19.2",
     "vue-barcode-scanner": "^0.6.0",
-    "vue-qrcode-reader": "^2.1.1"
+    "vue-qrcode-reader": "^2.1.1",
+    "vue-session": "1.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.0",

@@ -3,14 +3,14 @@
     <h2>Login</h2>
     User: <input type="user" v-model="input.user" placeholder="Username"/> <br/> <br/>
     Password: <input type="password" v-model="input.password" placeholder="Password"/> <br/> <br/>
-    <button type="button" v-on:click="check_login()">Login</button/>
-    <button type="button" v-on:click="register()">Register</button/>
+    <button type="button" v-on:click="check_login()">Login</button>
+    <button type="button" v-on:click="register()">Register</button>
   </div>
 </template>
 
 <script>
 import router from "../router"
-import axios from "axios"
+// import axios from "axios"
 
 let account = {
   user: "test",
@@ -42,8 +42,8 @@ export default {
     },
     login() {
       
-      let user = "[account.user]"
-      let password = "[account.password]"
+      // let user = "[account.user]"
+      // let password = "[account.password]"
       
         
         // axios.post("/api/login", data)
@@ -52,6 +52,8 @@ export default {
             this.$session.start()
             this.$session.set('token', 'TestToken')
             this.$session.set('userid', 'TestId')
+            this.loginpath = "/logout";
+            this.loginname = "Logout";
             console.log(this.$session.getAll());
             console.log("Logged in")
             router.push("/")
