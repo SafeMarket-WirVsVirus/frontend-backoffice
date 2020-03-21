@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>Register</p>
+    <p>fjhdfifjh</p>
   </div>
 </template>
 

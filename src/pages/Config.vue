@@ -1,29 +1,17 @@
 <template>
   <div>
-    <p>Hier kannst du dich einloggen</p>
-    <input type="email" v-model="form.email">
-    <input type="password" v-model="form.email">
-    Deine Email ist: {{ this.test }}
+    <p>Config Screen</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Login',
-  data() {
+  name: 'Config',
+  data () {
     return {
-      form: {
-          email: '',
-          password: ''
-      } 
-    }
-  },
-  computed() {
-    return {
-      test: 2
+      msg: 'Welcome to Your Vue.js App'
     }
   }
-
 }
 </script>
 
