@@ -10,7 +10,3 @@ export default {
   name: 'App'
 }
 </script>
-
-<style lang="scss">
-@import './assets/styles/main.scss';
-</style>
