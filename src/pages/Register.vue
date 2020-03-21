@@ -29,31 +29,10 @@ export default {
     }
   },
   methods: {
-    handleSubmit (event) {
+    handleSubmit () {
       alert(`Register '${this.user.name}' (${this.user.email}) with ` +
         `password ${this.user.password}`)
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-label {
-  display: block;
-}
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
