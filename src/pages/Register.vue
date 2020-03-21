@@ -29,7 +29,7 @@ export default {
     }
   },
   methods: {
-    handleSubmit (event) {
+    handleSubmit () {
       alert(`Register '${this.user.name}' (${this.user.email}) with ` +
         `password ${this.user.password}`)
     }
