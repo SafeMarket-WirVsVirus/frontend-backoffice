@@ -5,50 +5,38 @@
     <form @submit.prevent="handleSubmit">
       <div class="form-group">
         <input
-          placeholder="Vorname*"
+          placeholder="Name"
           class="form-control"
           id="name-input"
           type="text"
-          v-model="user.name"
-        />
-        <input placeholder="Name" class="form-control" id="1st-name-input" type="text" />
-        <input
-          placeholder="Passwort*"
-          class="form-control"
-          id="password-input"
-          type="password"
-          v-model="user.password"
-        />
-        <input
-          placeholder="Passwort wiederholen*"
-          class="form-control"
-          id="password-repeat-input"
-          type="password"
+          v-model="user.Name"
         />
       </div>
       <div class="form-group">
         <input
-          placeholder="Firma"
+          placeholder="Passwort"
           class="form-control"
-          id="company-input"
-          type="text"
+          id="password-input"
+          type="password"
+          v-model="user.Password"
         />
       </div>
-      <input
-        placeholder="E-Mail*"
-        class="form-control"
-        id="email-input"
-        type="email"
-        v-model="user.email"
-      />
-      <input
-        placeholder="Telefon"
-        class="form-control"
-        id="phone-input"
-        type="tel"
-      />
-      *Plichteingabe<br />
-      <button type="submit" class="btn btn-primary">Profil anlegen</button>
+      <div class="form-group">
+        <input
+          placeholder="E-Mail"
+          class="form-control"
+          id="email-input"
+          type="email"
+          v-model="user.Email"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" :disabled="isLoading">
+        <span v-if="!isLoading">Profil anlegen</span>
+        <span v-if="isLoading">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </span>
+      </button>
+      <span class="error" v-if="isError">Es ist ein Fehler aufgetreten.</span>
     </form>
 
     <div></div>
@@ -56,24 +44,45 @@
 </template>
 
 <script>
+import { HTTP } from '../http'
+
 export default {
   name: "Register",
   data() {
     return {
       user: {
-        name: "",
-        email: "",
-        password: ""
-      }
-    };
+        Name: '',
+        Email: '',
+        Password: '',
+        Type: 0
+      },
+      isLoading: false,
+      isError: false
+    }
   },
   methods: {
     handleSubmit() {
-      alert(
-        `Register '${this.user.name}' (${this.user.email}) with ` +
-          `password ${this.user.password}`
-      );
+      this.isError = false;
+      this.isLoading = true;
+      HTTP.post('/api/User', this.user)
+      .then(response => {
+        console.log(response);
+        this.isError = false;
+        this.$router.replace({name: "Login"});
+      })
+      .catch(error => {
+        console.log(error);
+        this.isLoading = false;
+        this.isError = true;
+      })
+
     }
   }
-};
+}
 </script>
+
+<style lang="scss" scoped>
+.error{
+  padding-left: 10px;
+}
+</style>
