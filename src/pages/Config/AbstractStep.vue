@@ -1,6 +1,6 @@
 <script>
 import _ from 'lodash'
-import axios from 'axios'
+import {HTTP} from '../../http';
 import { mapGetters } from 'vuex'
 
 export default {
@@ -72,8 +72,9 @@ export default {
     },
 
     registerAPI(){
-
-      axios.post("https://wirvsvirusretail.azurewebsites.net/api/Location/Create", "{\"name\":\"Test\",\"fillStatus\":12,\"userId\":1}",{headers: {
+      console.log(this.allStores)
+      HTTP.post("https://wirvsvirusretail.azurewebsites.net/api/Location/Create", 
+      "{\"Name\":\""+this.companyName+"\",\"FillStatus\":0,\"UserId\":"+localStorage.userId+",\"SlotSize\":"+parseInt(this.clientsInStore-this.percentageReservations)+",\"SlotDuration\":"+this.averageDurationPerClientInMinutes+",\"ShopType\":0,\"Capacity\":"+this.clientsInStore+"}",{headers: {
         'Content-Type': 'application/json'
       }})
       .then((response) => {
