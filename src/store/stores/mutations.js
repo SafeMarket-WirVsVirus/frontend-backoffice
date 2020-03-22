@@ -10,7 +10,8 @@ const baseStore = {
   },
   clientsInStore: null,
   averageDurationPerClientInMinutes: null,
-  percentageReservations: null
+  percentageReservations: null,
+  placeId: 0
 }
 
 export default {

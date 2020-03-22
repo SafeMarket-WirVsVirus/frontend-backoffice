@@ -86,8 +86,17 @@ export default {
 
       let data = this.storeData
       console.log(data)
-      HTTP.post("/api/Location/Create", 
-      "{\"Name\":\""+data.name+"\",\"FillStatus\":0,\"UserId\":"+localStorage.userId+",\"SlotSize\":"+parseInt(data.clientsInStore-data.percentageReservations)+",\"SlotDuration\":"+data.averageDurationPerClientInMinutes+",\"ShopType\":0,\"Capacity\":"+data.clientsInStore+"}",{headers: {
+      HTTP.post("/api/Location", 
+      {
+        "Name":data.name,
+        "FillStatus":0,
+        "UserId":localStorage.userId,
+        "SlotSize":parseInt(data.clientsInStore-data.percentageReservations),
+        "SlotDuration":data.averageDurationPerClientInMinutes,
+        "ShopType":0,
+        "Capacity":data.clientsInStore,
+        "PlacesId":data.PlacesId
+      },{headers: {
         'Content-Type': 'application/json'
       }})
       .then((response) => {
