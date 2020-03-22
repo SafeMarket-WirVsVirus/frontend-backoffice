@@ -1,9 +1,8 @@
 <template>
   <div>
-    <p>This is the home page</p>
-    <button type="button" v-on:click="logout()">Logout</button>
-
+    <h1>Meine Filialen</h1>
     <store-list />
+    <a href="">weitere Filiale hinzufügen</a>
   </div>
 </template>
 
@@ -12,7 +11,7 @@ import { HTTP } from '../http'
 import StoreList from "@/components/StoreList"
 
 export default {
-  name: 'Home',
+  name: 'Stores',
   components: { StoreList },
   data () {
     return {
@@ -20,11 +19,6 @@ export default {
     }
   },
   methods: {
-    logout(){
-      console.log(this)
-      localStorage.token = null
-      this.$router.push('/login')
-    }
   },
   created() {
     console.log(this.$session.getAll())
