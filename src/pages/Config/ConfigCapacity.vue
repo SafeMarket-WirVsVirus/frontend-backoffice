@@ -3,15 +3,15 @@
     <div>Kapazitäten</div>
     <div class="form-group">
       <label for="exampleInputEmail1">Wie viele Personen sollen gleichzeitig in den Laden gehen?</label>
-      <input type="number" class="form-control"  placeholder="80">
+      <input type="number" class="form-control"  placeholder="80" v-model="clientsInStore">
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Wie lange braucht ein Kunde durchschnittlich pro Einkauf?</label>
-      <input type="number" class="form-control" id="exampleInputEmail1"  placeholder="">
+      <input type="number" class="form-control" id="exampleInputEmail1"  placeholder="" v-model="averageDurationPerClientInMinutes">
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Wieviel Laufkundschaft möchten Sie</label>
-      <input type="number" class="form-control" id="exampleInputEmail1"  placeholder="">
+      <input type="number" class="form-control" id="exampleInputEmail1"  placeholder="" v-model="percentageReservations">
     </div>
     <div class="form-group">
       <button type="button"  class="btn btn-secondary" @click="prevStep">Zurück</button>
@@ -25,6 +25,44 @@ import AbstractStep from './AbstractStep'
 
 export default {
   name: 'ConfigCapacity',
-  extends: AbstractStep
+  extends: AbstractStep,
+  computed: {
+    clientsInStore: {
+      get () {
+        return this.getStoreAttributeByName('clientsInStore', this.activeStoreIndex) || ''
+      },
+      set (value) {
+        this.$store.dispatch('stores/setStoreAttribute', {
+          activeStoreIndex: this.activeStoreIndex,
+          name: 'clientsInStore',
+          value: value
+        })
+      }
+    },
+    averageDurationPerClientInMinutes: {
+      get () {
+        return this.getStoreAttributeByName('averageDurationPerClientInMinutes', this.activeStoreIndex) || ''
+      },
+      set (value) {
+        this.$store.dispatch('stores/setStoreAttribute', {
+          activeStoreIndex: this.activeStoreIndex,
+          name: 'clientsInStore',
+          value: value
+        })
+      }
+    },
+    percentageReservations: {
+      get () {
+        return this.getStoreAttributeByName('percentageReservations', this.activeStoreIndex) || ''
+      },
+      set (value) {
+        this.$store.dispatch('stores/setStoreAttribute', {
+          activeStoreIndex: this.activeStoreIndex,
+          name: 'percentageReservations',
+          value: value
+        })
+      }
+    }
+  }
 }
 </script>

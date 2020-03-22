@@ -29,5 +29,16 @@ export default {
       });
     });
     commit('addNewStores', _)
+  },
+
+  /**
+   * Sets an attribute for a single store.
+   *
+   * @param {Function} commit
+   * @param {Object<{ activeStoreIndex: Number, name: String, value: String }>} payload
+   * @returns {void}
+   */
+  setStoreAttribute: ({ commit }, payload) => {
+    commit('setStoreAttribute', payload)
   }
 }

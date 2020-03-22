@@ -28,5 +28,13 @@ export default {
         return _.cloneDeep(store)
       }
     }
+  },
+
+  getStoreAttributeByName: (state, getters) => {
+    return (fieldName, activeStoreIndex) => {
+      const store = getters.getStoreByIndex(activeStoreIndex)
+
+      return _.get(store, fieldName)
+    }
   }
 }
