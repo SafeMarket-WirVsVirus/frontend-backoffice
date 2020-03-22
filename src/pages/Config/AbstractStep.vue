@@ -16,7 +16,8 @@ export default {
     ...mapGetters({
       activeStoreIndex: 'settings/activeStoreIndex',
       allStores: 'stores/allStores',
-      getStoreByIndex: 'stores/getStoreByIndex'
+      getStoreByIndex: 'stores/getStoreByIndex',
+      getStoreAttributeByName: 'stores/getStoreAttributeByName'
     }),
 
     position () {
