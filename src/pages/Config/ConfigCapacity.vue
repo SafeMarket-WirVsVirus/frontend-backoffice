@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
       <button type="button"  class="btn btn-secondary" @click="prevStep">Zurück</button>
-      <button type="button"  class="btn btn-primary" @click="nextStep">Fertig</button>
+      <button type="button"  class="btn btn-primary float-right" @click="nextStep">Fertig</button>
     </div>
   </div>
 </template>

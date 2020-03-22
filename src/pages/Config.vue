@@ -5,16 +5,26 @@
         <span class="subtitle">REWE Göttingen</span>
         <div>Schritt 1 von 3</div>
         <div>Adresse</div>
-            <div class="form-group">
+          <div class="form-group">
             <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Vorname">
+          </div>
+          <div class="form-group">
             <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Name">
+          </div>
+          <div class="form-group">
             <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Firma">
+          </div>
+          <div class="form-group">
             <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Straße / Hausnummer">
+          </div>
+          <div class="form-group">
             <input type="number" class="form-control" id="exampleInputEmail1" placeholder="PLZ">
+          </div>
+          <div class="form-group">
             <button type="button"  class="btn btn-secondary">Zurück</button>
             <button type="button"  class="btn btn-primary">Weiter</button>
+          </div>
         </div>
-    </div>
     <div data-step="2">
         <h1>Neue Filiale anlegen</h1>
         <div>Schritt 2 von 2</div>
