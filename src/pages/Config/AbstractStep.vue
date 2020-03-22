@@ -1,6 +1,8 @@
 <script>
 import _ from 'lodash'
-import axios from "axios"
+import axios from 'axios'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'AbstractStep',
   data () {
@@ -11,6 +13,12 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      activeStoreIndex: 'settings/activeStoreIndex',
+      allStores: 'stores/allStores',
+      getStoreByIndex: 'stores/getStoreByIndex'
+    }),
+
     position () {
       const route = this.stepRoutes.find(route => route.name === this.$route.name)
 
@@ -63,7 +71,7 @@ export default {
     },
 
     registerAPI(){
-              
+
       axios.post("https://wirvsvirusretail.azurewebsites.net/api/Location/Create", "{\"name\":\"Test\",\"fillStatus\":12,\"userId\":1}",{headers: {
         'Content-Type': 'application/json'
       }})
@@ -73,7 +81,7 @@ export default {
       }).catch((errors) => {
         console.log("Failed - " + errors)
       })
-  
+
     },
     backHome(){
       this.$router.push('/');
