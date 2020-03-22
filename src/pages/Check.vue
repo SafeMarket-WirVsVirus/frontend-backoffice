@@ -109,14 +109,16 @@ export default {
             this.scanMode = false;
         },
 
-        verifyTicket ( code ) {
+        async verifyTicket ( code ) {
             this.isLoading = true;
-            this.isLoading = false;
-
-            return {
-                code: code,
-                isAllowed: false
-            }
+             HTTP.get('/VerifyTicket?ticketId=1')
+            .then(response => {
+                this.isLoading = false;
+                return {
+                    code: code,
+                    isAllowed: response.data.validationResult
+                }
+            })            
         },
 
         switchMode () {
