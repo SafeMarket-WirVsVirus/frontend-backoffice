@@ -36,7 +36,7 @@ export default {
   },
   created() {
     console.log(localStorage)
-    if(localStorage.length >0){
+    if(localStorage.userId !== undefined ){
       router.push('/');
     }
   },

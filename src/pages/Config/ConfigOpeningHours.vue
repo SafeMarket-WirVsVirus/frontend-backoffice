@@ -6,23 +6,13 @@
       <div role="tablist">
         <b-card no-body class="mb-1" v-for="(day, index) in days" :key="index">
           <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block href="#" v-b-toggle="'accordion-' + index" variant="info">{{day}}</b-button>
+            <b-button block href="#" v-b-toggle="'accordion-' + index" variant="info">{{ day.label }}</b-button>
           </b-card-header>
-          <b-collapse :id="'accordion-' + index" :visible="index===0" accordion="my-accordion" role="tabpanel">
+          <b-collapse :id="'accordion-' + index" :visible="index === 0" accordion="my-accordion" role="tabpanel">
             <b-card-body>
               <b-card-text>
                 <div>
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" value="8:00" v-model="from" />
-                    <div class="input-group-append">
-                      <span class="input-group-text" :id="'from-' + index" :key="index">Uhr</span>
-                    </div>
-                    <div>bis</div>
-                    <input type="text" class="form-control" value="20:00" v-model="to" />
-                    <div class="input-group-append">
-                      <span class="input-group-text" :id="'to-' + index" :key="index">Uhr</span>
-                    </div>
-                  </div>
+                  <day-opening-hours :day="day.name" :index="index" />
                 </div>
               </b-card-text>
             </b-card-body>
@@ -40,51 +30,49 @@
 
 <script>
 import AbstractStep from "./AbstractStep";
+import DayOpeningHours from "@/components/DayOpeningHours";
 
 export default {
   name: "ConfigOpeningHours",
   extends: AbstractStep,
-
+  components: {
+    DayOpeningHours
+  },
   data() {
     const days = [
-      "Montag",
-      "Dienstag",
-      "Mittwoch",
-      "Donnerstag",
-      "Freitag",
-      "Samstag",
-      "Sonntag"
-    ];
+      {
+        label: 'Montag',
+        name: 'monday'
+      },
+      {
+        label: 'Dienstag',
+        name: 'tuesday'
+      },
+      {
+        label: 'Mittwoch',
+        name: 'wednesday'
+      },
+      {
+        label: 'Donnerstag',
+        name: 'thursday'
+      },
+      {
+        label: 'Freitag',
+        name: 'friday'
+      },
+      {
+        label: 'Samstag',
+        name: 'saturday'
+      },
+      {
+        label: 'Sonntag',
+        name: 'sunday'
+      }
+    ]
 
     return {
       days
-    };
-  },computed: {
-    montag: {
-      get () {
-        return this.getOpeningHoursByDay('Montag', this.activeStoreIndex) || ''
-      },
-      set (value) {
-        this.$store.dispatch('stores/addOpeningHour', {
-          activeStoreIndex: this.activeStoreIndex,
-          day: 'Montag',
-          from: value.from,
-          to: value.to
-        })
-      }
-    },
-    dienstag: {
-      get () {
-        return this.getStoreAttributeByName('to', this.activeStoreIndex) || ''
-      },
-      set (value) {
-        this.$store.dispatch('stores/setStoreAttribute', {
-          activeStoreIndex: this.activeStoreIndex,
-          name: 'to',
-          value: value
-        })
-      }
     }
   }
-};
+}
 </script>

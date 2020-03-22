@@ -30,6 +30,13 @@ export default {
     }
   },
 
+  /**
+   * Gets a store attribute by name.
+   *
+   * @param {Array} state
+   * @param {Object} getters
+   * @returns {Function}
+   */
   getStoreAttributeByName: (state, getters) => {
     return (fieldName, activeStoreIndex) => {
       const store = getters.getStoreByIndex(activeStoreIndex)
@@ -37,10 +44,18 @@ export default {
       return _.get(store, fieldName)
     }
   },
-  getOpeningHoursByDay: (state, getter) => {
+
+  /**
+   * Gets the opening hours for a single day.
+   *
+   * @param {Array} state
+   * @param {Object} getters
+   * @returns {Function}
+   */
+  getOpeningHoursByDay: (state, getters) => {
     return (dayName, activeStoreIndex) => {
       const store = getters.getStoreByIndex(activeStoreIndex)
-      const storeDayEntry = store.openingHours.find(item=>item.day === dayName)
+      const storeDayEntry = store.openingHours.find(item => item.day === dayName)
       return _.cloneDeep(storeDayEntry)
     }
   }

@@ -12,6 +12,7 @@
 <script>
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import router from "./router"
 
 export default {
   name: 'App',
@@ -24,14 +25,8 @@ export default {
   },
   created: function(){
 
-    // console.log(this.isLogedIn);
-    // if(!this.isLogedIn){
-    //   this.loginpath = "/logout";
-    //   this.loginname = "Logout";
-    // }else{
-    //   this.loginpath = '/login';
-    //   this.loginname = "Login";
-    // }
+    if(localStorage.userId == undefined && this.$route.path !== '/login' ) router.push('/login');
+    
   }
 }
 </script>
