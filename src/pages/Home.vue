@@ -22,19 +22,18 @@ export default {
   methods: {
     logout(){
       console.log(this)
-      // this.loginpath = "/login";
-      // this.loginname = "login";
-      this.$session.destroy()
+      localStorage.token = null
       this.$router.push('/login')
     }
   },
   created() {
-    HTTP.get(`posts`)
+    console.log(this.$session.getAll())
+    HTTP.get('/api/Location?id=1')
     .then(response => {
       this.posts = response.data
     })
     .catch(e => {
-      this.errors.push(e)
+      console.log(e)
     })
   }
 }
