@@ -83,10 +83,10 @@ export default {
       }
 
       // TODO: Do something magic with this.storeData
-
+      // ,\"ShopType\":\""+data.locationType+"\"
       let data = this.storeData
       console.log(data)
-      HTTP.post("/api/Location/Create", 
+      HTTP.post("/api/Location", 
       "{\"Name\":\""+data.name+"\",\"FillStatus\":0,\"UserId\":"+localStorage.userId+",\"SlotSize\":"+parseInt(data.clientsInStore-data.percentageReservations)+",\"SlotDuration\":"+data.averageDurationPerClientInMinutes+",\"ShopType\":0,\"Capacity\":"+data.clientsInStore+"}",{headers: {
         'Content-Type': 'application/json'
       }})

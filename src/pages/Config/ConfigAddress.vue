@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div>Adresse</div>
+    <div class="form-group">
+      <select id="type" class="form-control" v-model="locationType">
+        <option v-for="(type, index) in types" 
+            :key="index" :value="type" >{{type}}</option>
+      </select>
+    </div>
     <div class="form-group">
       <input type="text" class="form-control" id="companyName" placeholder="Filiale" v-model="companyName">
     </div>
@@ -23,6 +28,11 @@ import AbstractStep from './AbstractStep'
 export default {
   name: 'ConfigAddress',
   extends: AbstractStep,
+  data(){
+    return{
+      types:["bakery","book_store","clothing_store","convenience_store","department_store","drugstore","electronics_store","furniture_store","grocery_or_supermarket","hardware_store","home_goods_store","laundry","liquor_store","pet_store","pharmacy","shoe_store","shopping_mall","store","supermarket"]
+    }
+  },
   computed: {
     companyName: {
       get () {
@@ -56,6 +66,18 @@ export default {
         this.$store.dispatch('stores/setStoreAttribute', {
           activeStoreIndex: this.activeStoreIndex,
           name: 'address.zip',
+          value: value
+        })
+      }
+    },
+    locationType: {
+      get () {
+        return this.getStoreAttributeByName('locationType', this.activeStoreIndex) || ''
+      },
+      set (value) {
+        this.$store.dispatch('stores/setStoreAttribute', {
+          activeStoreIndex: this.activeStoreIndex,
+          name: 'locationType',
           value: value
         })
       }
