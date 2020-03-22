@@ -3,7 +3,7 @@
     <div>Kapazitäten</div>
     <div class="form-group">
       <label for="clientsInStore">Wie viele Personen sollen gleichzeitig in den Laden gehen?</label>
-      <input type="number" class="form-control" id="clientsInStore" placeholder="80" v-model="clientsInStore">
+      <input type="number" class="form-control" id="clientsInStore" placeholder="" v-model="clientsInStore">
     </div>
     <div class="form-group">
       <label for="averageDurationPerClientInMinutes">Wie lange braucht ein Kunde durchschnittlich pro Einkauf?</label>
