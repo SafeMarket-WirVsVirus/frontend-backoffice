@@ -1,10 +1,12 @@
 <template>
   <div>
-    <h2>Login</h2>
-    User: <input type="user" v-model="input.user" placeholder="Username"/> <br/> <br/>
-    Password: <input type="password" v-model="input.password" placeholder="Password"/> <br/> <br/>
-    <button type="button" v-on:click="check_login()">Login</button>
-    <button type="button" v-on:click="register()">Register</button>
+    <div class="logo"></div>
+    <div class="form-group">
+      <input type="email" v-model="input.user" class="form-control" placeholder="Name">
+      <input type="password" v-model="input.password" class="form-control" placeholder="Password">
+      <button type="button" v-on:click="check_login()" class="btn btn-primary">Anmelden</button>
+      <a href="register">Noch keinen Account? Sign up</a>
+    </div>
   </div>
 </template>
 
@@ -70,3 +72,16 @@ export default {
   
 }
 </script>
+
+<style lang="scss" scoped>
+
+.logo{
+  height: 100px;
+  width: 100px;
+  background: #ff0000;
+  border-radius: 50%;
+  margin: 20px auto;
+  display: block;
+}
+
+</style>
