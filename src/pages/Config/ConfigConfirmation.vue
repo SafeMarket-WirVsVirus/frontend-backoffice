@@ -15,6 +15,15 @@
       <div>{{ storeData.address.zip }} {{ storeData.address.city }}</div>
       <br>
       <div><strong>Öffnungszeiten:</strong></div>
+      <table class="table">
+      <tbody>
+        <tr  v-for="(openingHour, index) in storeData.openingHours"
+        :key="index">
+          <td>{{openingHour.day}} </td>
+          <td>{{openingHour.from}}  - {{openingHour.to}}</td>
+        </tr>
+      </tbody>
+      </table>
       <br>
       <div><strong>Kapazitäten:</strong></div>
       <div>Maximale Personen im Laden: {{ storeData.clientsInStore }}</div>

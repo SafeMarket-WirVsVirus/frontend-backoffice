@@ -87,6 +87,16 @@ export default {
       // ,\"ShopType\":\""+data.locationType+"\"
       let data = this.storeData
       console.log(data)
+      let openingAPIData = []
+      
+      for (let opening of data.openingHours){
+        let openingAPI = {"DayOfWeek": opening.day,
+                          "OpeningHours": new Date().toISOString().slice(0, 19).replace('T', ' '),
+                          "ClosingHours": new Date().toISOString().slice(0, 19).replace('T', ' ')}
+        openingAPIData.push(openingAPI)
+
+      } 
+      console.log(openingAPIData)
       HTTP.post("/api/Location",
       {
         "Name":data.name,
@@ -96,7 +106,8 @@ export default {
         "SlotDuration":data.averageDurationPerClientInMinutes,
         "ShopType":0,
         "Capacity":data.clientsInStore,
-        "PlacesId":data.PlacesId
+        "PlacesId":data.PlacesId,
+        "LocationOpening":openingAPIData
       },{headers: {
         'Content-Type': 'application/json'
       }})
