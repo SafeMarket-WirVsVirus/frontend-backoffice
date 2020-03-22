@@ -2,6 +2,7 @@
   <div>
     <div data-step="1">
         <h1>Neue Filiale anlegen</h1>
+        <span class="subtitle">REWE Göttingen</span>
         <div>Schritt 1 von 3</div>
         <div>Adresse</div>
             <div class="form-group">
