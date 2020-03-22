@@ -1,7 +1,7 @@
 <template>
   <form id="loginform"
     @submit="check_login">
-    <div class="logo"></div>
+    <div class="logo"><img src="/Safe_Market.svg"></div>
     <div class="form-group">
       <input type="text" v-model="input.user" class="form-control" placeholder="Name">
     </div>
@@ -75,16 +75,3 @@ export default {
   
 }
 </script>
-
-<style lang="scss" scoped>
-
-.logo{
-  height: 100px;
-  width: 100px;
-  background: #ff0000;
-  border-radius: 50%;
-  margin: 20px auto;
-  display: block;
-}
-
-</style>
