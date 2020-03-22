@@ -44,7 +44,7 @@ export default {
       allStores: 'stores/allStores'
     })
   },
-  beforeMount() {
+  beforeMount() {    
     HTTP.get('/api/Location/GetLocationByUserId/' + localStorage.userId)
     .then(response => {
       this.$store.dispatch('stores/addNewStores', response.data)
