@@ -6,10 +6,14 @@ module.exports = {
     },
     {
       position: 2,
-      name: 'ConfigCapacity'
+      name: 'ConfigOpeningHours'
     },
     {
       position: 3,
+      name: 'ConfigCapacity'
+    },
+    {
+      position: 4,
       name: 'ConfigConfirmation'
     }
   ]

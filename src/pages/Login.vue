@@ -9,7 +9,7 @@
       <input type="password" v-model="input.password" class="form-control" placeholder="Password">
     </div>
     <div class="form-group">
-      <button type="submit" v-on:click="check_login()" class="btn btn-primary float-right">Anmelden</button>
+      <button type="submit" class="btn btn-primary float-right">Anmelden</button>
     </div>
     <div class="form-group">
       <a href="register">Noch keinen Account? Sign up</a>
@@ -21,6 +21,7 @@
 <script>
 import router from "../router"
 import axios from "axios"
+import VueJwtDecode from 'vue-jwt-decode'
 
 
 export default {
@@ -31,6 +32,12 @@ export default {
           user: '',
           password: ''
       } 
+    }
+  },
+  created() {
+    console.log(localStorage)
+    if(localStorage.length != 0 && localStorage.token != "null"){
+      router.push('/');
     }
   },
   methods: {
@@ -58,10 +65,13 @@ export default {
                       {'Content-Type': 'application/json-patch+json'}
                     }
                   ).then((response) => {
-                    this.$session.start()
+                    //Save Token to localStorage
                     localStorage.token = response.data.jwtWebToken
-                    this.loginpath = "/logout";
-                    this.loginname = "Logout";
+                    //Decode JWT
+                    let decodeJWT = VueJwtDecode.decode(localStorage.token)
+                    console.log(decodeJWT)
+                    localStorage.userId = 1
+                    localStorage.decodeJWT = decodeJWT
                     router.push("/")
                   }).catch((errors) => {
                     console.log("Login failed - " + errors)

@@ -2,10 +2,7 @@
   <div>
     <div>Adresse</div>
     <div class="form-group">
-      <input type="text" class="form-control" id="name" placeholder="Vorname">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="name2" placeholder="Name">
+      <input type="text" class="form-control" id="name" placeholder="Name">
     </div>
     <div class="form-group">
       <input type="text" class="form-control" id="company" placeholder="Firma">

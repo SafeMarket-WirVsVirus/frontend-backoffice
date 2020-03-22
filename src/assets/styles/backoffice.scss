@@ -22,12 +22,17 @@ h1 {
     flex-grow: 0;
 
     .user-settings{
+      border: 0;
       margin: 10px;
       height: 40px;
       width: 40px;
       background: grey;
       border-radius: 50%;
       text-align: center;
+
+      &:hover{
+        background: lightgray;
+      }
 
       svg{
         height: 40px;
