@@ -3,7 +3,7 @@ import axios from 'axios';
 let token = localStorage.token
 
 export const HTTP = axios.create({
-  baseURL: `https://wirvsvirusretail.azurewebsites.netn`,
+  baseURL: `https://wirvsvirusretail.azurewebsites.net`,
   headers: {
     Authorization: 'Bearer ' + token
   }

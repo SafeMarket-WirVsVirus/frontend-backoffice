@@ -32,7 +32,7 @@ export default new Router({
       navTitle: 'Register'
     },
     {
-      path: '/check/',
+      path: '/check/:id',
       name: 'Check',
       component: Check,
       navTitle: 'Einlass',
