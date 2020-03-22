@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-group">
-      <select id="type" class="form-control" v-model="locationType">
+      <select id="type" class="form-control" v-model="locationType"  @change="onChange($event)">
         <option v-for="(type, index) in types"
             :key="index" :value="type" >{{type}}</option>
       </select>
@@ -39,18 +39,20 @@ export default {
   extends: AbstractStep,
   data(){
     return{
+      locations: [],
       types:["bakery","book_store","clothing_store","convenience_store","department_store","drugstore","electronics_store","furniture_store","grocery_or_supermarket","hardware_store","home_goods_store","laundry","liquor_store","pet_store","pharmacy","shoe_store","shopping_mall","store","supermarket"]
     }
   },
-  created(){
-    HTTP.get('/api/Location/Search',{
-      params: {
-        type: "supermarket",
-        longitude: 7,
-        latitude: 48,
-        radiusInMeters: 50000
-      }
-    })
+  methods:{
+    onChange(){
+      HTTP.get('/api/Location/Search',{
+        params: {
+          type: "supermarket",
+          longitude: 7,
+          latitude: 48,
+          radiusInMeters: 50000
+        }
+      })
       .then(response => {
         console.log(response.data)
         this.locations = response.data.locations
@@ -58,7 +60,7 @@ export default {
       .catch(e => {
         console.log(e)
       })
-
+    }
   },
   computed: {
     companyName: {
