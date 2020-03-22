@@ -6,21 +6,21 @@
       <div role="tablist">
         <b-card no-body class="mb-1" v-for="(day, index) in days" :key="index">
           <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block href="#" v-b-toggle.accordion-1 variant="info">{{day}}</b-button>
+            <b-button block href="#" v-b-toggle="'accordion-' + index" variant="info">{{day}}</b-button>
           </b-card-header>
-          <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+          <b-collapse :id="'accordion-' + index" :visible="index===0" accordion="my-accordion" role="tabpanel">
             <b-card-body>
               <b-card-text>
                 <div>
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="8:00" />
                     <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon2">Uhr</span>
+                      <span class="input-group-text" :id="'from-' + index" :key="index">Uhr</span>
                     </div>
                     <div>bis</div>
                     <input type="text" class="form-control" placeholder="20:00" />
                     <div class="input-group-append">
-                      <span class="input-group-text" id="basic-addon2">Uhr</span>
+                      <span class="input-group-text" :id="'to-' + index" :key="index">Uhr</span>
                     </div>
                   </div>
                 </div>
@@ -55,9 +55,9 @@ export default {
       "Samstag",
       "Sonntag"
     ];
-    let count: 0;
+
     return {
-      days count
+      days
     };
   }
 };
