@@ -19,8 +19,6 @@ export default {
   methods: {
     logout(){
       console.log(this)
-      // this.loginpath = "/login";
-      // this.loginname = "login";
       localStorage.token = null
       this.$router.push('/login')
     }
