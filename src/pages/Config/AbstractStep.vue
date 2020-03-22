@@ -34,7 +34,7 @@ export default {
       return this.getStoreByIndex(this.activeStoreIndex)
     }
 
-    
+
   },
   methods: {
     /**
@@ -86,7 +86,7 @@ export default {
 
       let data = this.storeData
       console.log(data)
-      HTTP.post("/api/Location", 
+      HTTP.post("/api/Location",
       {
         "Name":data.name,
         "FillStatus":0,

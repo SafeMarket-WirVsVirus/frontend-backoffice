@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div>Adresse</div>
+    <div class="form-group">
+      <select id="type" class="form-control" v-model="locationType">
+        <option v-for="(type, index) in types"
+            :key="index" :value="type" >{{type}}</option>
+      </select>
+    </div>
     <div class="form-group">
       <input type="text" class="form-control" id="companyName" placeholder="Filiale" v-model="companyName">
     </div>
@@ -21,8 +26,8 @@
       <button type="button" class="btn btn-primary float-right" @click="nextStep">Weiter</button>
     </div>
 
-    
-    
+
+
   </div>
 </template>
 
@@ -34,25 +39,25 @@ export default {
   extends: AbstractStep,
   data(){
     return{
-      locations: {}
+      types:["bakery","book_store","clothing_store","convenience_store","department_store","drugstore","electronics_store","furniture_store","grocery_or_supermarket","hardware_store","home_goods_store","laundry","liquor_store","pet_store","pharmacy","shoe_store","shopping_mall","store","supermarket"]
     }
   },
   created(){
     HTTP.get('/api/Location/Search',{
-        params: {
-          type: "supermarket",
-          longitude: 7,
-          latitude: 48,
-          radiusInMeters: 50000
-        }
+      params: {
+        type: "supermarket",
+        longitude: 7,
+        latitude: 48,
+        radiusInMeters: 50000
+      }
+    })
+      .then(response => {
+        console.log(response.data)
+        this.locations = response.data.locations
       })
-        .then(response => {
-          console.log(response.data)
-          this.locations = response.data.locations
-        })
-        .catch(e => {
-          console.log(e)
-        })
+      .catch(e => {
+        console.log(e)
+      })
 
   },
   computed: {
@@ -88,6 +93,18 @@ export default {
         this.$store.dispatch('stores/setStoreAttribute', {
           activeStoreIndex: this.activeStoreIndex,
           name: 'address.zip',
+          value: value
+        })
+      }
+    },
+    locationType: {
+      get () {
+        return this.getStoreAttributeByName('locationType', this.activeStoreIndex) || ''
+      },
+      set (value) {
+        this.$store.dispatch('stores/setStoreAttribute', {
+          activeStoreIndex: this.activeStoreIndex,
+          name: 'locationType',
           value: value
         })
       }
