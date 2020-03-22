@@ -12,7 +12,7 @@
 <script>
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import router from "./router"
+import router from './router'
 
 export default {
   name: 'App',
@@ -24,9 +24,11 @@ export default {
     return {}
   },
   created: function(){
-
-    if(localStorage.userId == undefined && this.$route.path !== '/login' ) router.push('/login');
-    
+    if (localStorage.userId == null &&
+      this.$route.path !== '/login' &&
+      this.$route.path !== '/register') {
+      router.push('/login')
+    }
   }
 }
 </script>
