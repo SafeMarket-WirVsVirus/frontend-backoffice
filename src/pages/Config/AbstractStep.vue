@@ -74,6 +74,9 @@ export default {
         console.log("Failed - " + errors)
       })
   
+    },
+    backHome(){
+      this.$router.push('/');
     }
   }
 }
