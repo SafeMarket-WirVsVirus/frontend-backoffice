@@ -1,12 +1,11 @@
 <script>
 import _ from 'lodash'
-
+import axios from "axios"
 export default {
   name: 'AbstractStep',
   data () {
     const configRoute = this.$router.options.routes.find(route => route.name === 'Config')
     const stepRoutes = _.get(configRoute, 'children', [])
-
     return {
       stepRoutes
     }
@@ -61,6 +60,23 @@ export default {
       if (targetRoute != null) {
         this.$router.push({ name: targetRoute.name })
       }
+    },
+
+    registerAPI(){
+              
+      axios.post("https://wirvsvirusretail.azurewebsites.net/api/Location/Create", "{\"name\":\"Test\",\"fillStatus\":12,\"userId\":1}",{headers: {
+        'Content-Type': 'application/json'
+      }})
+      .then((response) => {
+        console.log(response)
+        this.nextStep()
+      }).catch((errors) => {
+        console.log("Failed - " + errors)
+      })
+  
+    },
+    backHome(){
+      this.$router.push('/');
     }
   }
 }

@@ -58,14 +58,14 @@ export default {
                       {'Content-Type': 'application/json-patch+json'}
                     }
                   ).then((response) => {
-            this.$session.start()
-            localStorage.token = response.data.jwtWebToken
-            this.loginpath = "/logout";
-            this.loginname = "Logout";
-            router.push("/")
-        }).catch((errors) => {
-            console.log("Login failed - " + errors)
-          })
+                    this.$session.start()
+                    localStorage.token = response.data.jwtWebToken
+                    this.loginpath = "/logout";
+                    this.loginname = "Logout";
+                    router.push("/")
+                  }).catch((errors) => {
+                    console.log("Login failed - " + errors)
+                  })
       
     },
     register() {

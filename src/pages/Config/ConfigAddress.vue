@@ -17,7 +17,7 @@
       <input type="number" class="form-control" id="zip" placeholder="PLZ">
     </div>
     <div class="form-group">
-      <button type="button" class="btn btn-secondary">Zurück</button>
+      <button type="button" class="btn btn-secondary" @click="backHome">Zurück</button>
       <button type="button" class="btn btn-primary float-right" @click="nextStep">Weiter</button>
     </div>
   </div>
