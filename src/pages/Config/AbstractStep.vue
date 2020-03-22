@@ -28,6 +28,10 @@ export default {
 
     lastStep () {
       return this.stepRoutes.find(route => route.position === this.position + 1) == null
+    },
+
+    storeData () {
+      return this.getStoreByIndex(this.activeStoreIndex)
     }
   },
   methods: {
@@ -72,6 +76,11 @@ export default {
     },
 
     registerAPI(){
+      if (this.storeData == null) {
+        return
+      }
+
+      // TODO: Do something magic with this.storeData
 
       axios.post("https://wirvsvirusretail.azurewebsites.net/api/Location/Create", "{\"name\":\"Test\",\"fillStatus\":12,\"userId\":1}",{headers: {
         'Content-Type': 'application/json'

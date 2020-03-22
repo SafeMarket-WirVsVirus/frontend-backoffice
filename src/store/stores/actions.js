@@ -12,10 +12,8 @@ export default {
   },
 
   addNewStores: ({ commit }, stores) => {
-    var _ = [];
-
-    stores.forEach(element => {
-      _.push({
+    const newStores = stores.map(element => {
+      return {
         id: element.id,
         name: element.name,
         address: {
@@ -26,9 +24,10 @@ export default {
         clientsInStore: element.capacity,
         averageDurationPerClientInMinutes: element.slotDuration,
         percentageReservations: null
-      });
-    });
-    commit('addNewStores', _)
+      }
+    })
+
+    commit('addNewStores', newStores)
   },
 
   /**

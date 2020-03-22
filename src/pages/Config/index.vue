@@ -34,6 +34,11 @@ export default {
         headline = 'Neue Filiale anlegen'
     }
 
+    // @TODO: Replace in condition of context 'new' or 'edit'
+    if (this.storeData == null) {
+      this.$store.dispatch('stores/addNewStore', {})
+    }
+
     return {
       headline,
       steps
