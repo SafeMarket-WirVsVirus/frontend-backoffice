@@ -1,9 +1,9 @@
 <template>
   <form id="loginform"
-    @submit="check_login">
+    @submit.prevent="check_login">
     <div class="logo"><img src="/Safe_Market.svg"></div>
     <div class="form-group">
-      <input type="text" v-model="input.user" class="form-control" placeholder="Name">
+      <input type="email" v-model="input.user" class="form-control" placeholder="Email">
     </div>
     <div class="form-group">
       <input type="password" v-model="input.password" class="form-control" placeholder="Password">
@@ -41,11 +41,11 @@ export default {
     }
   },
   methods: {
-    check_login(e = null) {
-      if(e) e.preventDefault();
+    check_login() {
+      
       if(this.input.user != "" && this.input.password != "") {
         
-          this.$emit("authentification", true);
+          // this.$emit("authentification", true);
           this.login();
         
       } else {
@@ -53,14 +53,13 @@ export default {
       }
     },
     login() {
-      
       // let user = "[account.user]"
       // let password = "[account.password]"
       
         
                 
         axios.post("https://wirvsvirusretail.azurewebsites.net/api/Authentication", 
-                    "{\"Username\":\""+this.input.user+"\",\"Password\":\""+this.input.password+"\"}",
+                    "{\"Email\":\""+this.input.user+"\",\"Password\":\""+this.input.password+"\"}",
                     {headers: 
                       {'Content-Type': 'application/json-patch+json'}
                     }
@@ -70,8 +69,10 @@ export default {
                     //Decode JWT
                     let decodeJWT = VueJwtDecode.decode(localStorage.token)
                     console.log(decodeJWT)
-                    localStorage.userId = 1
-                    localStorage.decodeJWT = decodeJWT
+                    localStorage.userId = decodeJWT['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
+                    localStorage.userName = decodeJWT['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+                    localStorage.userEmail = decodeJWT['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']
+                    localStorage.userRole = decodeJWT['"http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
                     router.push("/")
                   }).catch((errors) => {
                     console.log("Login failed - " + errors)
