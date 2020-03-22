@@ -2,7 +2,7 @@
   <div>
     <h1>Meine Filialen</h1>
     <store-list />
-    <a href="">weitere Filiale hinzufügen</a>
+    <a href="config">weitere Filiale hinzufügen</a>
   </div>
 </template>
 
