@@ -23,7 +23,6 @@ new Vue({
   store,
   methods: {
 
-    // isLogedIn: function(){return this.$session.exists()}
 
   }
 }).$mount('#app')
