@@ -1,27 +1,23 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="info">
-    <a class="navbar-brand" href="/">Backoffice</a>
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-nav-item
-            :href="navItem.path"
-            :active="navItem.isCurrent === true"
-            v-for="(navItem, index) in navigationItems"
-            :key="index"
-        >
-          {{ navItem.navTitle }}
-        </b-nav-item>
-      </b-navbar-nav>
-    </b-collapse>
-  </b-navbar>
+<footer>
+    <a class="text-light"
+        :href="navItem.path"
+        :active="navItem.isCurrent === true"
+        v-for="(navItem, index) in navigationItems"
+        :key="index"
+    >
+    <span v-html="navItem.icon"></span>
+        <div>{{ navItem.navTitle }}</div>
+    </a>
+    
+</footer>
 </template>
 
 <script>
 export default {
-  name: 'Navigation',
+  name: 'Footer',
   data () {
-    const navigationPages = ['Home', 'Check', 'Login']
+    const navigationPages = ['Home', 'Check']
     const navigationItems = this.getNavigationItems(navigationPages)
 
     return {
@@ -50,6 +46,7 @@ export default {
           name: route.name,
           navTitle: route.navTitle || route.name,
           path: route.path,
+          icon: route.icon,
           isCurrent
         })
 
