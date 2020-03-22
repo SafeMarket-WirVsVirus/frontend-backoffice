@@ -1,9 +1,9 @@
 <template>
   <div>
-    <header v-show="!lastStep">
+    <div v-show="!lastStep">
       <h1>{{ headline }}</h1>
       <p class="subtitle">Schritt {{ position }} von 3</p>
-    </header>
+    </div>
 
     <div class="content">
       <router-view />

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <header>
+    <div>
       <h1>{{ companyName }}</h1>
       <p class="subtitle">wurde erfolgreich angelegt</p>
-    </header>
+    </div>
   </div>
 </template>
 
