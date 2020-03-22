@@ -3,19 +3,22 @@
     <p>This is the home page</p>
     <button type="button" v-on:click="logout()">Logout</button>
 
+    <store-list />
   </div>
 </template>
 
 <script>
-import {HTTP} from '../http';
+import { HTTP } from '../http'
+import StoreList from "@/components/StoreList"
 
 export default {
   name: 'Home',
+  components: { StoreList },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  }, 
+  },
   methods: {
     logout(){
       console.log(this)
