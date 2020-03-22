@@ -1,3 +1,4 @@
 export default {
-  activeStoreIndex: 0
+  activeStoreIndex: 0,
+  configStepsContext: 'new'
 }

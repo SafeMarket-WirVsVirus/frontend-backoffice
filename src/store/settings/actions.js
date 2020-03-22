@@ -7,7 +7,25 @@ export default {
    * @param {Number} activeStoreIndex
    * @returns {void}
    */
-  setActiveStoreIndex: ({ commit }, activeStoreIndex) => {
+  setActiveStoreIndex: ({ state, commit }, activeStoreIndex) => {
+    if (state.activeStoreIndex === activeStoreIndex) {
+      return
+    }
+
     commit('setActiveStoreIndex', activeStoreIndex)
+  },
+
+  /**
+   * Sets the config steps context to 'new' or 'edit'.
+   * @param {Function} commit
+   * @param {String} configStepsContext
+   * @returns {void}
+   */
+  setConfigStepsContext: ({ state, commit }, configStepsContext) => {
+    if (state.configStepsContext === configStepsContext) {
+      return
+    }
+
+    commit('setConfigStepsContext', configStepsContext)
   }
 }

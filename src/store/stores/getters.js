@@ -31,6 +31,24 @@ export default {
   },
 
   /**
+   * Gets the index from a store by an ID.
+   *
+   * @param {Array} state
+   * @returns {Function}
+   */
+  getStoreIndexById: (state) => {
+    return (id) => {
+      const store = state.findIndex(store => store.id === id)
+
+      if (store == null) {
+        return store
+      } else {
+        return _.cloneDeep(store)
+      }
+    }
+  },
+
+  /**
    * Gets a store attribute by name.
    *
    * @param {Array} state

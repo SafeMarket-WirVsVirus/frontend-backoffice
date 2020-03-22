@@ -15,6 +15,7 @@ export default {
   computed: {
     ...mapGetters({
       activeStoreIndex: 'settings/activeStoreIndex',
+      configStepsContext: 'settings/configStepsContext',
       allStores: 'stores/allStores',
       getStoreByIndex: 'stores/getStoreByIndex',
       getStoreAttributeByName: 'stores/getStoreAttributeByName',
@@ -88,14 +89,14 @@ export default {
       let data = this.storeData
       console.log(data)
       let openingAPIData = []
-      
+
       for (let opening of data.openingHours){
         let openingAPI = {"DayOfWeek": opening.day,
                           "OpeningHours": new Date().toISOString().slice(0, 19).replace('T', ' '),
                           "ClosingHours": new Date().toISOString().slice(0, 19).replace('T', ' ')}
         openingAPIData.push(openingAPI)
 
-      } 
+      }
       console.log(openingAPIData)
       HTTP.post("/api/Location",
       {

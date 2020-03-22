@@ -18,30 +18,31 @@ import AbstractStep from './AbstractStep'
 export default {
   name: 'Config',
   extends: AbstractStep,
-  props: {
-    context: { type: String, default: 'new' }
-  },
   data () {
-    let headline
-
-    switch (this.context) {
-      case 'edit':
-        headline = 'Filiale bearbeiten'
-        break
-      case 'new':
-        // fall through
-      default:
-        headline = 'Neue Filiale anlegen'
-    }
-
     // @TODO: Replace in condition of context 'new' or 'edit'
     if (this.storeData == null) {
       this.$store.dispatch('stores/addNewStore', {})
     }
 
     return {
-      headline,
       steps
+    }
+  },
+  computed: {
+    headline () {
+      let headline
+
+      switch (this.configStepsContext) {
+        case 'edit':
+          headline = 'Filiale bearbeiten'
+          break
+        case 'new':
+        // fall through
+        default:
+          headline = 'Neue Filiale anlegen'
+      }
+
+      return headline
     }
   }
 }
