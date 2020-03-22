@@ -17,7 +17,7 @@
 export default {
   name: 'Footer',
   data () {
-    const navigationPages = ['Home', 'Check']
+    const navigationPages = ['Stores', 'Profile']
     const navigationItems = this.getNavigationItems(navigationPages)
 
     return {

@@ -2,16 +2,16 @@
   <div>
     <div>Kapazitäten</div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Wie viele Personen sollen gleichzeitig in den Laden gehen?</label>
-      <input type="number" class="form-control"  placeholder="80" v-model="clientsInStore">
+      <label for="clientsInStore">Wie viele Personen sollen gleichzeitig in den Laden gehen?</label>
+      <input type="number" class="form-control" id="clientsInStore" placeholder="80" v-model="clientsInStore">
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Wie lange braucht ein Kunde durchschnittlich pro Einkauf?</label>
-      <input type="number" class="form-control" id="exampleInputEmail1"  placeholder="" v-model="averageDurationPerClientInMinutes">
+      <label for="averageDurationPerClientInMinutes">Wie lange braucht ein Kunde durchschnittlich pro Einkauf?</label>
+      <input type="number" class="form-control" id="averageDurationPerClientInMinutes"  placeholder="" v-model="averageDurationPerClientInMinutes">
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Wieviel Laufkundschaft möchten Sie</label>
-      <input type="number" class="form-control" id="exampleInputEmail1"  placeholder="" v-model="percentageReservations">
+      <label for="percentageReservations">Wieviel Laufkundschaft möchten Sie</label>
+      <input type="number" class="form-control" id="percentageReservations"  placeholder="" v-model="percentageReservations">
     </div>
     <div class="form-group">
       <button type="button"  class="btn btn-secondary" @click="prevStep">Zurück</button>
@@ -46,7 +46,7 @@ export default {
       set (value) {
         this.$store.dispatch('stores/setStoreAttribute', {
           activeStoreIndex: this.activeStoreIndex,
-          name: 'clientsInStore',
+          name: 'averageDurationPerClientInMinutes',
           value: value
         })
       }

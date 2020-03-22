@@ -29,6 +29,7 @@ export default {
     lastStep () {
       return this.stepRoutes.find(route => route.position === this.position + 1) == null
     },
+
     storeData () {
       return this.getStoreByIndex(this.activeStoreIndex)
     }
@@ -77,9 +78,11 @@ export default {
     },
 
     registerAPI(){
-       if (this.storeData == null) {
+      if (this.storeData == null) {
         return
       }
+
+      // TODO: Do something magic with this.storeData
 
       let data = this.storeData
       HTTP.post("/api/Location/Create", 

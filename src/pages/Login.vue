@@ -36,7 +36,7 @@ export default {
   },
   created() {
     console.log(localStorage)
-    if(localStorage.length != 0 && localStorage.token != "null"){
+    if(localStorage.length >0){
       router.push('/');
     }
   },

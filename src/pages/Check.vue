@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Einlass</h1>
-    <span class="subtitle">REWE Göttingen</span>
+    <span class="subtitle">{{store.name}}</span>
     <div class="validation">    
         <qrcode-stream @decode="onDecode" @init="onInit" class="scanner" v-if="scanMode" />
 
@@ -55,7 +55,7 @@
 
 <script>
 import { QrcodeStream } from 'vue-qrcode-reader'
-// import {HTTP} from '../http';
+import {HTTP} from '../http';
 
 export default {
     components: { QrcodeStream },
@@ -67,8 +67,15 @@ export default {
             scanMode: true,
             isLoading: false,
             checkedInPeople: 0,
-            maxPeople: 10
+            maxPeople: 10,
+            store: {}
         }
+    },
+    beforeMount() {
+        HTTP.get('/api/Location/' + this.$route.params.id)
+        .then(response => {
+            this.store = response.data;
+        })
     },
     computed: {
         isVerifiedClass: function () {
