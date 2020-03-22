@@ -30,19 +30,18 @@
 </template>
 
 <script>
-
-
+import Navigation from '@/components/Navigation'
 
 export default {
   name: 'App',
+  components: {
+    Navigation
+  },
   data () {
-    return {
-      loginpath: 'Test',
-      loginname: 'TEst',
-    }
+    return {}
   },
   created: function(){
-    
+
     // console.log(this.isLogedIn);
     // if(!this.isLogedIn){
     //   this.loginpath = "/logout";
