@@ -17,7 +17,8 @@ export default {
       activeStoreIndex: 'settings/activeStoreIndex',
       allStores: 'stores/allStores',
       getStoreByIndex: 'stores/getStoreByIndex',
-      getStoreAttributeByName: 'stores/getStoreAttributeByName'
+      getStoreAttributeByName: 'stores/getStoreAttributeByName',
+      getOpeningHoursByDay: 'stores/getOpeningHoursByDay'
     }),
 
     position () {

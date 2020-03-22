@@ -36,5 +36,12 @@ export default {
 
       return _.get(store, fieldName)
     }
+  },
+  getOpeningHoursByDay: (state, getter) => {
+    return (dayName, activeStoreIndex) => {
+      const store = getters.getStoreByIndex(activeStoreIndex)
+      const storeDayEntry = store.openingHours.find(item=>item.day === dayName)
+      return _.cloneDeep(storeDayEntry)
+    }
   }
 }

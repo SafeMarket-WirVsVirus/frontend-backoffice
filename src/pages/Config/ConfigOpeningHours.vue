@@ -13,12 +13,12 @@
               <b-card-text>
                 <div>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="8:00" />
+                    <input type="text" class="form-control" value="8:00" v-model="from" />
                     <div class="input-group-append">
                       <span class="input-group-text" :id="'from-' + index" :key="index">Uhr</span>
                     </div>
                     <div>bis</div>
-                    <input type="text" class="form-control" placeholder="20:00" />
+                    <input type="text" class="form-control" value="20:00" v-model="to" />
                     <div class="input-group-append">
                       <span class="input-group-text" :id="'to-' + index" :key="index">Uhr</span>
                     </div>
@@ -59,6 +59,32 @@ export default {
     return {
       days
     };
+  },computed: {
+    montag: {
+      get () {
+        return this.getOpeningHoursByDay('Montag', this.activeStoreIndex) || ''
+      },
+      set (value) {
+        this.$store.dispatch('stores/addOpeningHour', {
+          activeStoreIndex: this.activeStoreIndex,
+          day: 'Montag',
+          from: value.from,
+          to: value.to
+        })
+      }
+    },
+    dienstag: {
+      get () {
+        return this.getStoreAttributeByName('to', this.activeStoreIndex) || ''
+      },
+      set (value) {
+        this.$store.dispatch('stores/setStoreAttribute', {
+          activeStoreIndex: this.activeStoreIndex,
+          name: 'to',
+          value: value
+        })
+      }
+    }
   }
 };
 </script>

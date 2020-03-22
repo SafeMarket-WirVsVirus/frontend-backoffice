@@ -10,7 +10,8 @@ const baseStore = {
   },
   clientsInStore: null,
   averageDurationPerClientInMinutes: null,
-  percentageReservations: null
+  percentageReservations: null,
+  openingHours:[{"day":"Montag","from":"08:00","to":"20:00"}]
 }
 
 export default {
@@ -48,5 +49,21 @@ export default {
     }
 
     _.set(store, name, value)
+  },
+
+  addOpeningHour: (state, payload) => {
+    const { activeStoreIndex, day, from, to } = payload
+    const store = state[activeStoreIndex]
+
+    if (store == null) {
+      return
+    }
+
+    const day = store.openingHours.find(item.day === day)
+    if(day != 0){
+      store.openingHours.push({day,from,to})
+    }else{
+      _.merge(day,{day,from,to}) 
+    }
   }
 }
