@@ -4,7 +4,8 @@ import Home from '@/pages/Home'
 import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 import Check from '@/pages/Check'
-import Config from '@/pages/Config'
+import Config from '@/pages/Config/index'
+import { steps } from '@/config'
 
 Vue.use(Router)
 
@@ -32,9 +33,16 @@ export default new Router({
       component: Check
     },
     {
-      path: '/config/',
+      path: '/config',
       name: 'Config',
-      component: Config
+      redirect: '/config/1',
+      component: Config,
+      children: steps.map(step => {
+        return Object.assign({}, step, {
+          path: step.position.toString(),
+          component: () => import(`@/pages/Config/${step.name}.vue`)
+        })
+      })
     }
   ]
 })
