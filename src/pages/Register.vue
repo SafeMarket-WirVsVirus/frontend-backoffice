@@ -9,16 +9,22 @@
           class="form-control"
           id="name-input"
           type="text"
-          v-model="user.name"
+          v-model="user.Name"
         />
+      </div>
+      <div class="form-group">
         <input placeholder="Name" class="form-control" id="1st-name-input" type="text" />
+      </div>
+      <div class="form-group">
         <input
           placeholder="Passwort*"
           class="form-control"
           id="password-input"
           type="password"
-          v-model="user.password"
+          v-model="user.Password"
         />
+      </div>
+      <div class="form-group">
         <input
           placeholder="Passwort wiederholen*"
           class="form-control"
@@ -34,19 +40,23 @@
           type="text"
         />
       </div>
-      <input
-        placeholder="E-Mail*"
-        class="form-control"
-        id="email-input"
-        type="email"
-        v-model="user.email"
-      />
-      <input
-        placeholder="Telefon"
-        class="form-control"
-        id="phone-input"
-        type="tel"
-      />
+      <div class="form-group">
+        <input
+          placeholder="E-Mail*"
+          class="form-control"
+          id="email-input"
+          type="email"
+          v-model="user.Email"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          placeholder="Telefon"
+          class="form-control"
+          id="phone-input"
+          type="tel"
+        />
+      </div>
       *Plichteingabe<br />
       <button type="submit" class="btn btn-primary">Profil anlegen</button>
     </form>
@@ -56,24 +66,42 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { api } from '@/config'
+
 export default {
   name: "Register",
   data() {
     return {
       user: {
-        name: "",
-        email: "",
-        password: ""
+        Name: '',
+        Email: '',
+        Password: '',
+        Type: 0
       }
-    };
+    }
   },
   methods: {
     handleSubmit() {
-      alert(
-        `Register '${this.user.name}' (${this.user.email}) with ` +
-          `password ${this.user.password}`
-      );
+      // alert(
+      //   `Register '${this.user.name}' (${this.user.email}) with ` +
+      //     `password ${this.user.password}`
+      // )
+
+      axios.post(
+        api.user,
+        this.user,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      ).then(response => {
+        console.log({ response })
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   }
-};
+}
 </script>
