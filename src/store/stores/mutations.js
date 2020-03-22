@@ -24,5 +24,11 @@ export default {
    */
   addNewStore: (state, payload) => {
     state.push(_.merge({}, baseStore, payload))
+  },
+
+  addNewStores: (state, payload) => {
+    payload.forEach(element => {
+      state.push(_.merge({}, baseStore, element));
+    });
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="list-group" v-for="(store, index) in allStores" :key="index">
-      <div class="list-group-item">
+    <div class="list-group">
+      <div class="list-group-item" v-for="(store, index) in allStores" :key="index">
       <div class="d-flex flex-row align-items-center">
         <div class="p-2 flex-fill">
           <div>
@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="p-2 d-flex flex-row align-items-center">
-          <a href="check" class="action d-flex flex-column align-items-center mr-3 text-secondary">
+          <a v-bind:href="'check/' + store.id" class="action d-flex flex-column align-items-center mr-3 text-secondary">
             <svg class="bi bi-check-box" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L8 9.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
               <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 003 14.5h10a1.5 1.5 0 001.5-1.5V8a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H3a.5.5 0 01-.5-.5V3a.5.5 0 01.5-.5h8a.5.5 0 000-1H3A1.5 1.5 0 001.5 3v10z" clip-rule="evenodd"/>
@@ -35,12 +35,19 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { HTTP } from '../http'
 
 export default {
   name: 'StoreList',
   computed: {
     ...mapGetters({
       allStores: 'stores/allStores'
+    })
+  },
+  beforeMount() {
+    HTTP.get('/api/Location/GetLocationByUserId/1')
+    .then(response => {
+      this.$store.dispatch('stores/addNewStores', response.data)
     })
   }
 }
