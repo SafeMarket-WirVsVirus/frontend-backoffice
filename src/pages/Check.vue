@@ -111,7 +111,7 @@ export default {
 
         async verifyTicket ( code ) {
             this.isLoading = true;
-             HTTP.get('/VerifyTicket?ticketId=1')
+             HTTP.get('/VerifyTicket?ticketId=' + code)
             .then(response => {
                 this.isLoading = false;
                 return {
