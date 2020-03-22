@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <div class="form-group">
       <select id="type" class="form-control" v-model="locationType">
@@ -7,13 +8,20 @@
       </select>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" id="companyName" placeholder="Filiale" v-model="companyName">
+      <input type="number" class="form-control" id="radius" placeholder="Radius in km" v-model="radius" />
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" id="street" placeholder="Straße / Hausnummer" v-model="street">
+      <button type="button" class="btn btn-primary" @click="checkGeoLocation">Standorte auflisten</button>
     </div>
+<!--     <div>Adresse</div>
     <div class="form-group">
-      <input type="number" class="form-control" id="zip" placeholder="PLZ" v-model="zip">
+      <input
+        type="text"
+        class="form-control"
+        id="companyName"
+        placeholder="Filiale"
+        v-model="companyName"
+      />
     </div>
     <div class="form-group">
       <select class="form-control" id="googleplace" v-model="placeId">
@@ -21,6 +29,18 @@
         </option>
       </select>
     </div>
+      <input
+        type="text"
+        class="form-control"
+        id="street"
+        placeholder="Straße / Hausnummer"
+        v-model="street"
+      />
+    </div> -->
+
+<!--     <div class="form-group">
+      <input type="number" class="form-control" id="zip" placeholder="PLZ" v-model="zip" />
+    </div> -->
     <div class="form-group">
       <button type="button" class="btn btn-secondary" @click="backHome">Zurück</button>
       <button type="button" class="btn btn-primary float-right" @click="nextStep">Weiter</button>
@@ -59,6 +79,14 @@ export default {
         console.log(e)
       })
 
+  methods: {
+    checkGeoLocation(){
+      this.$getLocation()
+      .then(coordinates => {
+        console.log(coordinates);
+      return coordinates;
+      });
+      }
   },
   computed: {
     companyName: {
