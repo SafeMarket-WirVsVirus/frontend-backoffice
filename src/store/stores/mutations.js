@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import Vue from 'vue'
 
 const baseStore = {
   id: '',
@@ -11,6 +12,44 @@ const baseStore = {
   clientsInStore: null,
   averageDurationPerClientInMinutes: null,
   percentageReservations: null,
+  openingHours:[
+    {
+      day: 'monday',
+      from: '',
+      to: ''
+    },
+    {
+      day: 'tuesday',
+      from: '',
+      to: ''
+    },
+    {
+      day: 'wednesday',
+      from: '',
+      to: ''
+    },
+    {
+      day: 'thursday',
+      from: '',
+      to: ''
+    },
+    {
+      day: 'friday',
+      from: '',
+      to: ''
+    },
+    {
+      day: 'saturday',
+      from: '',
+      to: ''
+    },
+    {
+      day: 'sunday',
+      from: '',
+      to: ''
+    }
+  ],
+  locationType: '',
   placeId: 0
 }
 
@@ -49,5 +88,35 @@ export default {
     }
 
     _.set(store, name, value)
+  },
+
+  /**
+   * Add opening hours to store.
+   *
+   * @param {Array} state
+   * @param {Object} payload
+   * @returns {void}
+   */
+  addOpeningHour: (state, payload) => {
+    const { type, activeStoreIndex, day, value } = payload
+    const store = state[activeStoreIndex]
+
+    if (store == null) {
+      return
+    }
+
+    const dayOpeningHoursIndex = store.openingHours.findIndex(item => item.day === day)
+    const dayOpeningHours = store.openingHours.find(item => item.day === day)
+    const diff = { day }
+    diff[type] = value
+
+    const newOpeningHours = _.merge({}, dayOpeningHours, diff)
+
+    if (dayOpeningHoursIndex === -1) {
+      store.openingHours.push(newOpeningHours)
+    } else {
+      store.openingHours.splice(dayOpeningHoursIndex, 1, newOpeningHours)
+      Vue.set(state, activeStoreIndex, store)
+    }
   }
 }

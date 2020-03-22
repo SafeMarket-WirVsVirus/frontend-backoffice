@@ -39,5 +39,9 @@ export default {
    */
   setStoreAttribute: ({ commit }, payload) => {
     commit('setStoreAttribute', payload)
+  },
+
+  addOpeningHour: ({ commit }, payload) => {
+    commit('addOpeningHour', payload)
   }
 }
