@@ -28,7 +28,12 @@ export default {
 
     lastStep () {
       return this.stepRoutes.find(route => route.position === this.position + 1) == null
+    },
+    storeData () {
+      return this.getStoreByIndex(this.activeStoreIndex)
     }
+
+    
   },
   methods: {
     /**
@@ -72,9 +77,13 @@ export default {
     },
 
     registerAPI(){
-      console.log(this.allStores)
-      HTTP.post("https://wirvsvirusretail.azurewebsites.net/api/Location/Create", 
-      "{\"Name\":\""+this.companyName+"\",\"FillStatus\":0,\"UserId\":"+localStorage.userId+",\"SlotSize\":"+parseInt(this.clientsInStore-this.percentageReservations)+",\"SlotDuration\":"+this.averageDurationPerClientInMinutes+",\"ShopType\":0,\"Capacity\":"+this.clientsInStore+"}",{headers: {
+       if (this.storeData == null) {
+        return
+      }
+
+      let data = this.storeData
+      HTTP.post("/api/Location/Create", 
+      "{\"Name\":\""+data.name+"\",\"FillStatus\":0,\"UserId\":"+localStorage.userId+",\"SlotSize\":"+parseInt(data.clientsInStore-data.percentageReservations)+",\"SlotDuration\":"+data.averageDurationPerClientInMinutes+",\"ShopType\":0,\"Capacity\":"+data.clientsInStore+"}",{headers: {
         'Content-Type': 'application/json'
       }})
       .then((response) => {
