@@ -5,10 +5,28 @@ export default {
    * Gets all stores.
    *
    * @public
-   * @param {Object} state
+   * @param {Array} state
    * @returns {Array} stores
    */
   allStores: (state) => {
     return _.cloneDeep(state)
+  },
+
+  /**
+   * Gets a single store by ID.
+   *
+   * @param {Array} state
+   * @returns {function(...[*]=)}
+   */
+  getStoreByIndex: (state) => {
+    return (index) => {
+      const store = state[index]
+
+      if (store == null) {
+        return store
+      } else {
+        return _.cloneDeep(store)
+      }
+    }
   }
 }

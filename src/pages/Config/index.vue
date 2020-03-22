@@ -2,7 +2,7 @@
   <div>
     <div v-show="!lastStep">
       <h1>{{ headline }}</h1>
-      <p class="subtitle">Schritt {{ position }} von 3</p>
+      <p class="subtitle">Schritt {{ position }} von {{ steps.length }}</p>
     </div>
 
     <div class="content">
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { steps } from '@/config'
 import AbstractStep from './AbstractStep'
 
 export default {
@@ -34,7 +35,8 @@ export default {
     }
 
     return {
-      headline
+      headline,
+      steps
     }
   }
 }
