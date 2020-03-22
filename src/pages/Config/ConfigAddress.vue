@@ -47,7 +47,7 @@ export default {
     onChange(){
       HTTP.get('/api/Location/Search',{
         params: {
-          type: "supermarket",
+          type: this.locationType,
           longitude: 7,
           latitude: 48,
           radiusInMeters: 50000
