@@ -1,43 +1,46 @@
 <template>
-  <div>
+  <form id="loginform"
+    @submit="check_login">
     <div class="logo"></div>
     <div class="form-group">
-      <input type="email" v-model="input.user" class="form-control" placeholder="Name">
+      <input type="text" v-model="input.user" class="form-control" placeholder="Name">
+    </div>
+    <div class="form-group">
       <input type="password" v-model="input.password" class="form-control" placeholder="Password">
-      <button type="button" v-on:click="check_login()" class="btn btn-primary">Anmelden</button>
+    </div>
+    <div class="form-group">
+      <button type="submit" v-on:click="check_login()" class="btn btn-primary float-right">Anmelden</button>
+    </div>
+    <div class="form-group">
       <a href="register">Noch keinen Account? Sign up</a>
     </div>
-  </div>
+    
+  </form>
 </template>
 
 <script>
 import router from "../router"
-// import axios from "axios"
+import axios from "axios"
 
-let account = {
-  user: "test",
-  password: "123"
-}
 
 export default {
   name: 'Login',
   data() {
     return {
       input: {
-          email: '',
+          user: '',
           password: ''
       } 
     }
   },
   methods: {
-    check_login() {
+    check_login(e = null) {
+      if(e) e.preventDefault();
       if(this.input.user != "" && this.input.password != "") {
-        if(this.input.user == account.user && this.input.password == account.password) {
+        
           this.$emit("authentification", true);
           this.login();
-        } else {
-          console.log("Incorrect username and/or password!");
-        }
+        
       } else {
         console.log("Please enter a username and password!");
       }
@@ -48,21 +51,21 @@ export default {
       // let password = "[account.password]"
       
         
-        // axios.post("/api/login", data)
-        //   .then((response) => {
-            console.log("Blubber");
+                
+        axios.post("https://wirvsvirusretail.azurewebsites.net/api/Authentication", 
+                    "{\"Username\":\""+this.input.user+"\",\"Password\":\""+this.input.password+"\"}",
+                    {headers: 
+                      {'Content-Type': 'application/json-patch+json'}
+                    }
+                  ).then((response) => {
             this.$session.start()
-            this.$session.set('token', 'TestToken')
-            this.$session.set('userid', 'TestId')
+            localStorage.token = response.data.jwtWebToken
             this.loginpath = "/logout";
             this.loginname = "Logout";
-            console.log(this.$session.getAll());
-            console.log("Logged in")
             router.push("/")
-        // })
-        //   .catch((errors) => {
-        //     console.log("Login failed")
-        //   })
+        }).catch((errors) => {
+            console.log("Login failed - " + errors)
+          })
       
     },
     register() {
