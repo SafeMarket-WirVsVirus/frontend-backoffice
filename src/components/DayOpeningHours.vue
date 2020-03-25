@@ -1,11 +1,11 @@
 <template>
   <div class="input-group mb-3">
-    <input type="text" class="form-control" value="8:00" v-model="openingHoursFrom" />
+    <input type="time" class="form-control" value="08:00" v-model="openingHoursFrom" />
     <div class="input-group-append">
       <span class="input-group-text">Uhr</span>
     </div>
     <div>bis</div>
-    <input type="text" class="form-control" value="20:00" v-model="openingHoursTo" />
+    <input type="time" class="form-control" value="20:00" v-model="openingHoursTo" />
     <div class="input-group-append">
       <span class="input-group-text">Uhr</span>
     </div>
