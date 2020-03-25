@@ -1,11 +1,14 @@
 <template>
-  <div class="input-group mb-3">
-    <input type="time" class="form-control" value="08:00" v-model="openingHoursFrom" />
+  <div class="row align-middle">
+    <div class="col-sm-2">
+      {{ daylabel }}
+    </div>
+    <input type="time" class="form-control col-sm-1" value="08:00" v-model="openingHoursFrom" />
     <div class="input-group-append">
       <span class="input-group-text">Uhr</span>
     </div>
-    <div>bis</div>
-    <input type="time" class="form-control" value="20:00" v-model="openingHoursTo" />
+    <div class="ml-3 mr-3">bis</div>
+    <input type="time" class="form-control col-sm-1" value="20:00" v-model="openingHoursTo" />
     <div class="input-group-append">
       <span class="input-group-text">Uhr</span>
     </div>
@@ -19,7 +22,8 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'DayOpeningHours',
   props: {
-    day: { type: String, required: true }
+    day: { type: String, required: true },
+    daylabel: { type: String, required: true },
   },
   computed: {
     ...mapGetters({

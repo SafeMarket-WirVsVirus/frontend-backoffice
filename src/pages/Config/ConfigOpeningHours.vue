@@ -1,25 +1,11 @@
 <template>
   <div>
     <p>Öffnungszeiten</p>
-
-    <div>
-      <div role="tablist">
-        <b-card no-body class="mb-1" v-for="(day, index) in days" :key="index">
-          <b-card-header header-tag="header" class="p-1" role="tab">
-            <b-button block href="#" v-b-toggle="'accordion-' + index" variant="info">{{ day.label }}</b-button>
-          </b-card-header>
-          <b-collapse :id="'accordion-' + index" :visible="index === 0" accordion="my-accordion" role="tabpanel">
-            <b-card-body>
-              <b-card-text>
-                <div>
-                  <day-opening-hours :day="day.name" :index="index" />
-                </div>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
-        </b-card>
+    <form class="form">
+      <div class="form-group" v-for="(day, index) in days" :key="index">
+        <day-opening-hours :day="day.name" :daylabel="day.label" :index="index" />      
       </div>
-    </div>
+    </form>
 
     <div class="form-group">
       <button type="button" class="btn btn-secondary" @click="prevStep">Zurück</button>
