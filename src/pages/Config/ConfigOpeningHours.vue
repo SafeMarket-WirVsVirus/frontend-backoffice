@@ -28,31 +28,31 @@ export default {
     const days = [
       {
         label: 'Montag',
-        name: 'monday'
+        name: 'Monday'
       },
       {
         label: 'Dienstag',
-        name: 'tuesday'
+        name: 'Tuesday'
       },
       {
         label: 'Mittwoch',
-        name: 'wednesday'
+        name: 'Wednesday'
       },
       {
         label: 'Donnerstag',
-        name: 'thursday'
+        name: 'Thursday'
       },
       {
         label: 'Freitag',
-        name: 'friday'
+        name: 'Friday'
       },
       {
         label: 'Samstag',
-        name: 'saturday'
+        name: 'Saturday'
       },
       {
         label: 'Sonntag',
-        name: 'sunday'
+        name: 'Sunday'
       }
     ]
 
