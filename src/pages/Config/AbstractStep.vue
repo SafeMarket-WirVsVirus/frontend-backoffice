@@ -2,6 +2,7 @@
 import _ from 'lodash'
 import {HTTP} from '../../http';
 import { mapGetters } from 'vuex'
+import { steps } from '@/config'
 
 export default {
   name: 'AbstractStep',
@@ -47,8 +48,10 @@ export default {
       if (this.position == null) {
         return
       }
-
-      this.goToStep(this.position + 1)
+      if(this.validate()){
+        this.goToStep(this.position + 1)
+      }
+      
     },
 
     /**
@@ -121,6 +124,22 @@ export default {
     },
     backHome(){
       this.$router.push('/');
+    },
+    validate(){
+      let data = this.storeData
+      console.log(steps)
+      console.log(data)
+      let step = steps.find(item => item.position == this.position)
+      console.log(step)
+      if(step.name == "ConfigOpeningHours"){
+        for (let opening of data.openingHours){
+          if(!opening.from){
+            return false
+          }
+        }      
+      }
+      
+      return true
     }
   }
 }
