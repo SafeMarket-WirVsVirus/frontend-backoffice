@@ -8,12 +8,15 @@
 #
 # For more information on GitHub Actions for Azure, refer to https://github.com/Azure/Actions
 # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
+name: Deploy to Azure
+
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+    - public
 
 env:
-  AZURE_WEBAPP_NAME: SafeMarket Backoffice    # set this to your application's name
+  AZURE_WEBAPP_NAME: wvvrbackoffice    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '13.12.0'                # set this to the node version to use
 
