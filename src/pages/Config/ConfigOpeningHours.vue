@@ -17,6 +17,7 @@
 <script>
 import AbstractStep from "./AbstractStep";
 import DayOpeningHours from "@/components/DayOpeningHours";
+import { days } from "@/config";
 
 export default {
   name: "ConfigOpeningHours",
@@ -25,37 +26,6 @@ export default {
     DayOpeningHours
   },
   data() {
-    const days = [
-      {
-        label: 'Montag',
-        name: 'Monday'
-      },
-      {
-        label: 'Dienstag',
-        name: 'Tuesday'
-      },
-      {
-        label: 'Mittwoch',
-        name: 'Wednesday'
-      },
-      {
-        label: 'Donnerstag',
-        name: 'Thursday'
-      },
-      {
-        label: 'Freitag',
-        name: 'Friday'
-      },
-      {
-        label: 'Samstag',
-        name: 'Saturday'
-      },
-      {
-        label: 'Sonntag',
-        name: 'Sunday'
-      }
-    ]
-
     return {
       days
     }

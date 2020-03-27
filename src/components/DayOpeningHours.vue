@@ -3,12 +3,12 @@
     <div class="col-sm-2">
       {{ daylabel }}
     </div>
-    <input type="time" class="form-control col-sm-1" value="08:00" v-model="openingHoursFrom" />
+    <input type="time" class="form-control col-sm-1" v-model="openingHoursFrom" />
     <div class="input-group-append">
       <span class="input-group-text">Uhr</span>
     </div>
     <div class="ml-3 mr-3">bis</div>
-    <input type="time" class="form-control col-sm-1" value="20:00" v-model="openingHoursTo" />
+    <input type="time" class="form-control col-sm-1" v-model="openingHoursTo" />
     <div class="input-group-append">
       <span class="input-group-text">Uhr</span>
     </div>

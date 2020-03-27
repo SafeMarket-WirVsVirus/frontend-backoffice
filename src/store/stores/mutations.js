@@ -3,54 +3,52 @@ import Vue from 'vue'
 
 const baseStore = {
   id: '',
-  name: '',
-  address: {
-    street: '',
-    zip: '',
-    city: ''
-  },
   clientsInStore: null,
   averageDurationPerClientInMinutes: null,
   percentageReservations: null,
   openingHours:[
     {
-      day: 'monday',
-      from: '',
-      to: ''
+      day: 'Monday',
+      from: '08:00',
+      to: '22:00'
     },
     {
-      day: 'tuesday',
-      from: '',
-      to: ''
+      day: 'Tuesday',
+      from: '08:00',
+      to: '22:00'
     },
     {
-      day: 'wednesday',
-      from: '',
-      to: ''
+      day: 'Wednesday',
+      from: '08:00',
+      to: '22:00'
     },
     {
-      day: 'thursday',
-      from: '',
-      to: ''
+      day: 'Thursday',
+      from: '08:00',
+      to: '22:00'
     },
     {
-      day: 'friday',
-      from: '',
-      to: ''
+      day: 'Friday',
+      from: '08:00',
+      to: '22:00'
     },
     {
-      day: 'saturday',
-      from: '',
-      to: ''
+      day: 'Saturday',
+      from: '08:00',
+      to: '22:00'
     },
     {
-      day: 'sunday',
-      from: '',
-      to: ''
+      day: 'Sunday',
+      from: '08:00',
+      to: '22:00'
     }
   ],
   locationType: '',
-  placeId: 0
+  place: {
+    id: 0,
+    name: "",
+    address: ""
+  }
 }
 
 export default {

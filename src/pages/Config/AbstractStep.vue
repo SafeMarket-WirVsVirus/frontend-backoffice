@@ -93,23 +93,31 @@ export default {
       let openingAPIData = []
       
       for (let opening of data.openingHours){
+        let openingHourMinute = opening.from.split(":")
+        let closingHourMinute = opening.to.split(":")
+        let openingData = new Date()
+        let closingDate = new Date()
+
+        openingData.setHours(openingHourMinute[0],openingHourMinute[1])
+        closingDate.setHours(closingHourMinute[0],closingHourMinute[1])
+
         let openingAPI = {"DayOfWeek": opening.day,
-                          "OpeningHours": new Date().toISOString().slice(0, 19).replace('T', ' '),
-                          "ClosingHours": new Date().toISOString().slice(0, 19).replace('T', ' ')}
+                          "OpeningHours": openingData.toISOString().slice(0, 19).replace('T', ' '),
+                          "ClosingHours": closingDate.toISOString().slice(0, 19).replace('T', ' ')}
         openingAPIData.push(openingAPI)
 
       } 
-      console.log(openingAPIData)
+
       HTTP.post("/api/Location",
       {
-        "Name":data.name,
+        "Name":data.place.name,
         "FillStatus":0,
         "UserId":localStorage.userId,
         "SlotSize":parseInt(data.clientsInStore-data.percentageReservations),
         "SlotDuration":data.averageDurationPerClientInMinutes,
         "ShopType":0,
         "Capacity":data.clientsInStore,
-        "PlacesId":data.PlacesId,
+        "PlacesId":data.place.id,
         "LocationOpening":openingAPIData
       },{headers: {
         'Content-Type': 'application/json'
@@ -133,10 +141,11 @@ export default {
       console.log(step)
       if(step.name == "ConfigOpeningHours"){
         for (let opening of data.openingHours){
+          console.log(opening)
           if(!opening.from){
             return false
           }
-        }      
+        }
       }
       
       return true

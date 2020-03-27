@@ -16,5 +16,35 @@ module.exports = {
       position: 4,
       name: 'ConfigConfirmation'
     }
+  ],
+  days: [
+    {
+      label: 'Montag',
+      name: 'Monday'
+    },
+    {
+      label: 'Dienstag',
+      name: 'Tuesday'
+    },
+    {
+      label: 'Mittwoch',
+      name: 'Wednesday'
+    },
+    {
+      label: 'Donnerstag',
+      name: 'Thursday'
+    },
+    {
+      label: 'Freitag',
+      name: 'Friday'
+    },
+    {
+      label: 'Samstag',
+      name: 'Saturday'
+    },
+    {
+      label: 'Sonntag',
+      name: 'Sunday'
+    }
   ]
 }
