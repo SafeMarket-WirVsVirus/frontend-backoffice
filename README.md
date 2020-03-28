@@ -1,7 +1,7 @@
 
 # vue-app
 
-[![buddy pipeline](https://app.buddy.works/speckphilipp-1/frontend-backoffice/pipelines/pipeline/246193/badge.svg?token=1ee57497e55ddc76b3e4f3dac5a30c5acdbcdd028e5c1330e2c52e118be62d8c "buddy pipeline")](https://app.buddy.works/speckphilipp-1/frontend-backoffice/pipelines/pipeline/246193)
+[![buddy pipeline](https://app.buddy.works/florianeichin/frontend-backoffice/pipelines/pipeline/247494/badge.svg?token=1ee57497e55ddc76b3e4f3dac5a30c5acdbcdd028e5c1330e2c52e118be62d8c "buddy pipeline")](https://app.buddy.works/florianeichin/frontend-backoffice/pipelines/pipeline/247494)
 
 ## Project setup
 ```
