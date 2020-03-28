@@ -1,7 +1,7 @@
 <template>
   <form id="loginform"
     @submit.prevent="check_login">
-    <div class="logo"><img src="/AppIcon.png"></div>
+    <div class="logo"><img src="/Safe_Market.svg"></div>
     <div class="form-group">
       <input type="email" v-model="input.user" class="form-control" placeholder="Email">
     </div>
