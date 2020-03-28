@@ -11,11 +11,11 @@
     </div>
 
     <div class="form-group">
-      <select class="form-control" id="googleplace" v-model="placeId">
+      <select class="form-control" id="googleplace" v-model="place" @change="placeChange($event)">
         <option
           v-for="(place, index) in locations"
           :key="index"
-          :value="place.placeId"
+          :value="{id:place.placeId, name:place.name, address:place.address}"
         >{{place.name}} - {{place.address}}</option>
       </select>
     </div>
@@ -61,55 +61,13 @@ export default {
       .catch(e => {
         console.log(e)
       })
+    },
+    placeChange(event){
+      console.log(event.target.value.id)
+      console.log(event.target.value.name)
     }
   },
   computed: {
-    companyName: {
-      get() {
-        return (
-          this.getStoreAttributeByName("name", this.activeStoreIndex) || ""
-        );
-      },
-      set(value) {
-        this.$store.dispatch("stores/setStoreAttribute", {
-          activeStoreIndex: this.activeStoreIndex,
-          name: "name",
-          value: value
-        });
-      }
-    },
-    street: {
-      get() {
-        return (
-          this.getStoreAttributeByName(
-            "address.street",
-            this.activeStoreIndex
-          ) || ""
-        );
-      },
-      set(value) {
-        this.$store.dispatch("stores/setStoreAttribute", {
-          activeStoreIndex: this.activeStoreIndex,
-          name: "address.street",
-          value: value
-        });
-      }
-    },
-    zip: {
-      get() {
-        return (
-          this.getStoreAttributeByName("address.zip", this.activeStoreIndex) ||
-          ""
-        );
-      },
-      set(value) {
-        this.$store.dispatch("stores/setStoreAttribute", {
-          activeStoreIndex: this.activeStoreIndex,
-          name: "address.zip",
-          value: value
-        });
-      }
-    },
     locationType: {
       get () {
         return this.getStoreAttributeByName('locationType', this.activeStoreIndex) || ''
@@ -122,16 +80,16 @@ export default {
         })
       }
     },
-    placeId: {
+    place: {
       get() {
         return (
-          this.getStoreAttributeByName("placeId", this.activeStoreIndex) || ""
+          this.getStoreAttributeByName("place", this.activeStoreIndex) || ""
         );
       },
       set(value) {
         this.$store.dispatch("stores/setStoreAttribute", {
           activeStoreIndex: this.activeStoreIndex,
-          name: "placeId",
+          name: "place",
           value: value
         });
       }
