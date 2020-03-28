@@ -12,18 +12,19 @@ export default {
   },
 
   addNewStores: ({ commit }, stores) => {
+    console.log(stores)
     const newStores = stores.map(element => {
+      console.log(element)
       return {
-        id: element.id,
-        name: element.name,
-        address: {
-          street: '',
-          zip: '',
-          city: ''
-        },
+        id: element.id,        
         clientsInStore: element.capacity,
         averageDurationPerClientInMinutes: element.slotDuration,
-        percentageReservations: null
+        percentageReservations: null,
+        place: {
+          id: element.placesId,
+          name: element.name,
+          address: element.address
+        }
       }
     })
 

@@ -5,7 +5,7 @@
       <div class="d-flex flex-row align-items-center">
         <div class="p-2 flex-fill">
           <div>
-            <h5>{{ store.name }}</h5>
+            <h5>{{ store.id }} - {{ store.place.name }}</h5>
           </div>
           <div>
             <span class="text-primary">{{ store.percentageReservations }}</span> / <span>{{ store.clientsInStore }}</span>
