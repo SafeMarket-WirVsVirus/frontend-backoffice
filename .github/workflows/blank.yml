@@ -27,12 +27,26 @@ jobs:
         npm run build --if-present
         npm run test --if-present
     - name: 'Deploy to Server'
-      uses: AEnterprise/rsync-deploy@v1.0
+      uses: BuildPC/rsync-with-ssh-github-actions@master
       env:
-        DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        ARGS: "-e -c -r --delete"
-        SERVER_PORT: ${{ secrets.SERVER_PORT }}
-        FOLDER: "./"
-        SERVER_IP: ${{ secrets.SERVER_IP }}
-        USERNAME: ${{ secrets.USERNAME }}
-        SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
+        HELLO: cool
+        MESSAGE: hello world
+      with:
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        host: ${{ secrets.SERVER_IP }}
+        port: ${{ secrets.SERVER_PORT }}
+        user: ${{ secrets.USERNAME }}
+        destination: ${{ secrets.SERVER_DESTINATION }}
+        # runs this on remove server
+        ssh_before: |
+          echo $HELLO
+          echo $MESSAGE
+          ls -lath
+
+        # then run these commands
+        ssh_after: |
+          echo $HELLO
+          echo $MESSAGE
+          ls -lath
+       
+
