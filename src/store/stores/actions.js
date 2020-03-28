@@ -15,15 +15,14 @@ export default {
     const newStores = stores.map(element => {
       return {
         id: element.id,
-        name: element.name,
-        address: {
-          street: '',
-          zip: '',
-          city: ''
-        },
         clientsInStore: element.capacity,
         averageDurationPerClientInMinutes: element.slotDuration,
-        percentageReservations: null
+        percentageReservations: null,
+        place: {
+          id: element.placesId,
+          name: element.name,
+          address: element.address
+        }
       }
     })
 
