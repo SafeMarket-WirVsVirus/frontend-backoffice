@@ -117,7 +117,7 @@ export default {
         "SlotDuration":data.averageDurationPerClientInMinutes,
         "ShopType":0,
         "Capacity":data.clientsInStore,
-        "PlacesId":data.place.id,
+        "PlacesId":data.place.place_id,
         "LocationOpening":openingAPIData
       },{headers: {
         'Content-Type': 'application/json'

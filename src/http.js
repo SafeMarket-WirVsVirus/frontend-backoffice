@@ -19,3 +19,6 @@ axios.interceptors.response.use(function (response) {
       return Promise.reject(error);
   }
 });
+
+export const HTTP_GEO = axios.create({
+});
