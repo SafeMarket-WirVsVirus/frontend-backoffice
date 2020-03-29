@@ -11,6 +11,10 @@ export default {
     commit('addNewStore', store)
   },
 
+  removeNewStore:({ commit }, store) => {
+    commit('removeNewStore', store)
+  },
+
   addNewStores: ({ commit }, stores) => {
     const newStores = stores.map(element => {
       return {

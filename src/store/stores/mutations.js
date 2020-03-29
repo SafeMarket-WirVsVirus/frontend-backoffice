@@ -63,6 +63,9 @@ export default {
   addNewStore: (state, payload) => {
     state.push(_.merge({}, baseStore, payload))
   },
+  removeNewStore: (state) =>  {
+    state.pop()
+  },
 
   addNewStores: (state, payload) => {
     payload.forEach(element => {

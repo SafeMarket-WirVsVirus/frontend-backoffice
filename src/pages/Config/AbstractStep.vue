@@ -131,6 +131,9 @@ export default {
 
     },
     backHome(){
+      if (this.storeData != null) {
+        this.$store.dispatch('stores/removeNewStore', {})
+      }
       this.$router.push('/');
     },
     validate(){
