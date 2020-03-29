@@ -6,6 +6,7 @@
       <router-view/>
     </div>
     <Footer/>
+    <notifications />
   </div>
 </template>
 
@@ -13,12 +14,14 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import router from './router'
+import Notifications from '@/components/Notifications'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Footer
+    Footer,
+    Notifications
   },
   data () {
     return {}
