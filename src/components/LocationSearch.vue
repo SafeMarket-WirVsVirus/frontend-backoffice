@@ -14,7 +14,7 @@
             <div class="card-body">
                 <p class="lead">Gewählte Adresse</p>
                 <p class="card-text">{{selectedAddress.name}}<br /><small>{{selectedAddress.formatted_address}}</small></p>
-                <p><a href="" @click="resetPlace">Andere Adresse wählen</a></p>
+                <p><a href="" @click.prevent="resetPlace">Andere Adresse wählen</a></p>
             </div>
             </div>
         </div>
