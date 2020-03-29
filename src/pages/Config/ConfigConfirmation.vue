@@ -11,7 +11,7 @@
       <br>
       <div><strong>Zusammenfassung:</strong></div>
       <div>{{ storeData.place.name }}</div>
-      <div>{{ storeData.place.address }}</div>
+      <div>{{ storeData.place.formatted_address }}</div>
       <br>
       <div><strong>Öffnungszeiten:</strong></div>
       <table class="table">
