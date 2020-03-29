@@ -1,5 +1,8 @@
 <template>
   <div>
+<<<<<<< HEAD
+    <location-search></location-search>
+=======
     <div class="form-group">
       <select id="type" class="form-control" v-model="locationType" @change="onChange($event)">
         <option v-for="(type, index) in types" :key="index" :value="type">{{type}}</option>
@@ -19,20 +22,27 @@
         >{{place.name}} - {{place.address}}</option>
       </select>
     </div>
+>>>>>>> 17a959d6df10d4546451a08a75ff558eb571719f
 
     <div class="form-group">
       <button type="button" class="btn btn-secondary" @click="backHome">Zurück</button>
       <button type="button" class="btn btn-primary float-right" @click="nextStep">Weiter</button>
     </div>
+
+    
   </div>
+
+
 </template>
 
 <script>
 import AbstractStep from "./AbstractStep";
-import { HTTP } from "../../http";
+import LocationSearch from "@/components/LocationSearch"
+
 export default {
   name: "ConfigAddress",
   extends: AbstractStep,
+  components: { LocationSearch },
   data(){
     return{
       radius: '',
@@ -41,6 +51,9 @@ export default {
     };
   },
   methods:{
+<<<<<<< HEAD
+
+=======
     onChange(){
       const radiusInt = parseInt(this.radius, 10)
       const radiusInMeters = radiusInt != null && !isNaN(radiusInt) ? radiusInt : 50000
@@ -66,6 +79,7 @@ export default {
       console.log(event.target.value.id)
       console.log(event.target.value.name)
     }
+>>>>>>> 17a959d6df10d4546451a08a75ff558eb571719f
   },
   computed: {
     locationType: {
